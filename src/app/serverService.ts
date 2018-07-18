@@ -16,6 +16,8 @@ export class ServerService {
   userData = [];
   courseData = [];
   editedUser = {};
+  editedQuiz = {};
+  editedQuizDEL = {};
   quizData;
   quizFlag = 0;
   constructor(private http: Http) {
@@ -74,11 +76,36 @@ getAllQuiz() {
   editUser(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/users' + id, this.editedUser, options).map(
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/users/' + id, this.editedUser, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
       }
     );
   }
+
+  editQuiz(id) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(this.editedQuiz);
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz/' + id, this.editedQuiz, options).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
+  editQuizDEL(id) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(this.editedQuiz);
+    return this.http.delete('http://192.168.0.18:8080/api/quiz/' + id).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+  // http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz/
 }

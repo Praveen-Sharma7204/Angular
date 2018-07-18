@@ -13,7 +13,7 @@ import {PageEvent} from '@angular/material';
 })
 export class AllQuizComponent implements OnInit {
   pageEvent: PageEvent;
-  questions;
+  question;
   option1;
   option2;
   option3;
@@ -23,10 +23,12 @@ export class AllQuizComponent implements OnInit {
   quizid;
   category = [];
   flag = 0;
+  cat;
+  delid;
 
 
   user: Element;
-  displayedColumns = [ 'category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit'];
+  displayedColumns = [ 'category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
@@ -60,16 +62,18 @@ export class AllQuizComponent implements OnInit {
   }
   saveChanges() {
     const userEdited = {
-      questions: this.questions,
+      
+      question: this.question,
       image: this.image,
       option1: this.option1,
       option2: this.option2,
       option3: this.option3,
       option4: this.option4,
       correctAns: this.correctAns,
+      category: this.cat,
     };
-    this.serverService.editedUser = userEdited;
-    this.serverService.editUser(this.quizid).subscribe((data) => {
+    this.serverService.editedQuiz = userEdited;
+    this.serverService.editQuiz(this.quizid).subscribe((data) => {
       console.log(data);
     }, (error) => console.log('Error'));
     // this.router.navigate(['users']);
@@ -82,13 +86,31 @@ export class AllQuizComponent implements OnInit {
   }
   callme(data) {
     console.log(data);
-    this.questions = data.questions;
+    this.question = data.question.qstn;
     this.image = data.image;
-    this.option1 = data.option1;
-    this.option2 = data.option2;
-    this.option3 = data.option3;
-    this.option4 = data.option4;
+    this.option1 = data.options[0];
+    this.option2 = data.options[1];
+    this.option3 = data.options[2];
+    this.option4 = data.options[3];
     this.correctAns = data.correctAns;
     this.quizid = data._id;
+    this.cat = data.category;
+  }
+
+  callmeDEL(data) {
+    this.delid= data._id;
+  }
+
+  saveChangesDEL() {
+    const userEdited = {
+      
+      _id: this.delid,
+    };
+    this.serverService.editedQuizDEL = userEdited;
+    this.serverService.editQuizDEL(this.delid).subscribe((data) => {
+      console.log(data);
+    }, (error) => console.log('Error'));
+    // this.router.navigate(['users']);
+    // window.location.reload();
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServerService} from '../serverService';
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-create-quiz',
@@ -16,12 +17,21 @@ export class CreateQuizComponent implements OnInit {
   option2;
   option3;
   option4;
+  category;
   questionId;
+  mediaURL;
+  mediaType;
   constructor(private fetch: ServerService) {
     
    }
    hideCategory() {
-     this.hide = false;
+     if(this.category == 'Create New') {
+       this.hide = false;
+     }
+    //  if(this.category != 'Create New' && this.category != 'Select category')
+    //  else{
+    //    name: this.selectedOption; 
+    //  }
    }
   ngOnInit() {
   this.fetch.getQuiz().subscribe((data) => {
@@ -30,14 +40,5 @@ export class CreateQuizComponent implements OnInit {
     }
     }, (error) => console.log('Error'));
  }
- callme(data) {
-  console.log(data);
-  this.question = data.question;
-  this.option1 = data.option1;
-  this.option2 = data.option2;
-  this.option3 = data.option3;
-  this.option4 = data.option4;
-  this.questionId = data._id;
-}
 
 }
