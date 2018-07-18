@@ -48,7 +48,6 @@ export class UsersComponent implements OnInit {
     };
     this.serverService.editedUser = userEdited;
     this.serverService.editUser(this.userid).subscribe((data) => {
-      console.log(data);
     }, (error) => console.log('Error'));
     // this.router.navigate(['users']);
     // window.location.reload();
@@ -60,7 +59,7 @@ export class UsersComponent implements OnInit {
   }
   callme(data) {
     console.log(data);
-    this.name = data.name;
+    this.name = data.userName;
     this.email = data.email;
     this.college = data.college;
     this.city = data.city;

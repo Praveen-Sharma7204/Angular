@@ -57,7 +57,6 @@ export class AllQuizComponent implements OnInit {
       }
       this.flag = 0;
     }
-    console.log(data);
   }
   saveChanges() {
     const userEdited = {
