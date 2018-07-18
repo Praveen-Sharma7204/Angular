@@ -1,0 +1,27 @@
+<!-- Main -->
+<main>
+  <div class="container">
+    <div class="row mt-5 pt-5">
+      <div class="col-lg-12 module-header">
+        <h2>All Courses</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mt-5" *ngFor="let item of data">
+        <div class="card animated fadeIn">
+          <div class="view hm-white-slight waves-light" mdbWavesEffect>
+            <img class="img-fluid card-imgs" [src]=item.imageURL>
+            <a>
+              <div class="mask"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{item.courseName}}</h4>
+            <p class="card-text">{{item.description}}</p>
+            <a class="btn secondary-color text-white waves-light" routerLink="/module" mdbWavesEffect>View </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

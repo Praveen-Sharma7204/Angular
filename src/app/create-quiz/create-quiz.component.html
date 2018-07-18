@@ -1,0 +1,161 @@
+<main>
+  <div class="container">
+    <div class="row mt-5 pt-5 justify-content-center">
+      <div class="col-sm-12 col-lg-9">
+        <div class="card animated fadeInLeft">
+          <div class="card-header info-color">
+            <h2 class="text-white">Create Quiz</h2>
+          </div>
+          <div class="card-body">
+            <form>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                      <!-- Material input -->
+                      <label for="inputEmail3MD" class="col-sm-2 col-form-label">Select Categories</label>
+                      <div class="col-sm-10">
+                        <div class="md-form mt-0">
+                          <!-- <select ng-model="def"> -->
+                         <select  class="form-control" id="inputEmail3MD" placeholder="Enter Your Question" > 
+                          <option *ngFor = "let i of opption">{{ i }}</option>
+                          <option (click) = "new()">Create New</option>
+
+                        </select>
+                          <!-- selected value {{ def }}
+
+                         </select> -->
+                        </div>
+                        
+                        
+                        <div class="md-form mt-0" *ngIf="!hide">
+                          <input type="text" class="form-control" id="inputEmail3MD" placeholder="New Categorie Name">
+                        </div>
+
+                        <!-- <div class="md-form mt-0">
+                            <button class="btn btn-primary" id="inputEmail3MD" placeholder="" (click)="basicModal.show()">Add Categories</button>
+                          </div> -->
+
+                        
+
+                      </div>
+                    </div>
+                  </div>
+              <div class="col-lg-12">
+                <div class="form-group row">
+                  <!-- Material input -->
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Question</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                     <input type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Question">
+                    </div>
+                    <div class="md-form mt-0">
+                        <input type="file" class="" id="inputEmail3MD" placeholder="">
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <!-- Material input -->
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 1</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 1">
+                    </div>
+                    <div class="md-form mt-0">
+                        <span class="mr-2">Correct Option 1</span> <input type="radio" name="option" />
+                    </div>
+                    <div class="md-form mt-2">
+                        <input type="file" class="" id="inputEmail3MD" placeholder="">
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <!-- Material input -->
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 2</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input type="email" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 2">
+                    </div>
+                    <div class="md-form mt-0">
+                        <span class="mr-2">Correct Option 1</span> <input type="radio" name="option" />
+                    </div>
+                    <div class="md-form mt-2">
+                        <input type="file" class="" id="inputEmail3MD" placeholder="">
+                      </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <!-- Material input -->
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 3</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input type="email" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 3">
+                    </div>
+                    <div class="md-form mt-0">
+                        <span class="mr-2">Correct Option 1</span>  <input type="radio" name="option" />
+                    </div>
+                    <div class="md-form mt-2">
+                        <input type="file" class="" id="inputEmail3MD" placeholder="">
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <!-- Material input -->
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 4</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input type="email" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 4">
+                    </div>
+                    <div class="md-form mt-0">
+                        <span class="mr-2">Correct Option 1</span> <input type="radio" name="option" />
+                    </div>
+                    <div class="md-form mt-2">
+                        <input type="file" class="" id="inputEmail3MD" placeholder="">
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="button text-center">
+                  <a  class="btn btn-primary">Save</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Add Categories</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="md-form">
+              <div class="md-form mt-0">
+                  <input type="email" class="form-control" id="inputEmail3MD" placeholder="Enter the Category Name">
+                </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" class="btn btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
