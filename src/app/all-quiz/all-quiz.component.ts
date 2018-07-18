@@ -21,6 +21,9 @@ export class AllQuizComponent implements OnInit {
   correctAns;
   image;
   quizid;
+  category = [];
+  flag = 0;
+
 
   user: Element;
   displayedColumns = [ 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit'];
@@ -34,8 +37,8 @@ export class AllQuizComponent implements OnInit {
    ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.serverService.getAllQuiz().subscribe((data) => {
-      this.updateAllQuizTable(data)
-    }, (error) => console.log('Error'));
+      this.updateAllQuizTable(data);
+  }, (error) => console.log('Error'));
   }
   updateAllQuizTable(data) {
     // for (const i of data){
@@ -43,7 +46,18 @@ export class AllQuizComponent implements OnInit {
     //     data.question.mediaURL = "https://www.freeiconspng.com/uploads/no-image-icon-15.png";
     // }
     this.dataSource.data = data;
-
+    for(const i of data){
+      for (const j of this.category)  {
+        if (i.category == j)  {
+          this.flag = 1;
+        }
+      }
+      if (this.flag == 0){
+      this.category.push(i.category);
+      }
+      this.flag = 0;
+    }
+    console.log(data);
   }
   saveChanges() {
     const userEdited = {
