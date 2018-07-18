@@ -26,7 +26,7 @@ export class AllQuizComponent implements OnInit {
 
 
   user: Element;
-  displayedColumns = [ 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit'];
+  displayedColumns = [ 'category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
