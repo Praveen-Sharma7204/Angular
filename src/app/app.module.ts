@@ -31,9 +31,14 @@ import {
   Headers,
   Response
 } from '@angular/http';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
 
 
 export const router: Routes = [
+  // { path: 'home', component: HomeComponent},
+  { path: 'login', component: LoginComponent},
+  // { path: '', component: LoginComponent },
   { path: '', component: HomeComponent },
   { path: 'createquiz', component: CreateQuizComponent },
   { path: 'module', component: ModulePageComponent },
@@ -61,7 +66,9 @@ export const router: Routes = [
     ScoresComponent,
     AllGamesComponent,
     AllIntroComponent,
-    AllQuizComponent
+    AllQuizComponent,
+    LoginComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

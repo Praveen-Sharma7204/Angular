@@ -19,8 +19,9 @@ export class AllQuizComponent implements OnInit {
   option3;
   option4;
   correctAns;
-  image;
+  imageURL;
   quizid;
+  mediaType;
   category = [];
   flag = 0;
   cat;
@@ -61,18 +62,19 @@ export class AllQuizComponent implements OnInit {
     }
   }
   saveChanges() {
-    const userEdited = {
+    const quizEdited = {
       
       question: this.question,
-      image: this.image,
+      imageURL: this.imageURL,
       option1: this.option1,
       option2: this.option2,
       option3: this.option3,
       option4: this.option4,
       correctAns: this.correctAns,
+      mediaType: this.mediaType,
       category: this.cat,
     };
-    this.serverService.editedQuiz = userEdited;
+    this.serverService.editedQuiz = quizEdited;
     this.serverService.editQuiz(this.quizid).subscribe((data) => {
       console.log(data);
     }, (error) => console.log('Error'));
@@ -87,7 +89,8 @@ export class AllQuizComponent implements OnInit {
   callme(data) {
     console.log(data);
     this.question = data.question.qstn;
-    this.image = data.image;
+    this.imageURL = data.imageURL;
+    this.mediaType = data.mediaType;
     this.option1 = data.options[0];
     this.option2 = data.options[1];
     this.option3 = data.options[2];
@@ -102,11 +105,11 @@ export class AllQuizComponent implements OnInit {
   }
 
   saveChangesDEL() {
-    const userEdited = {
+    const quizEdited = {
       
       _id: this.delid,
     };
-    this.serverService.editedQuizDEL = userEdited;
+    this.serverService.editedQuizDEL = quizEdited;
     this.serverService.editQuizDEL(this.delid).subscribe((data) => {
       console.log(data);
     }, (error) => console.log('Error'));

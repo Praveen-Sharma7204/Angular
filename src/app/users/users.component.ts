@@ -12,14 +12,18 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   pageEvent: PageEvent;
-  name;
+  fname;
+  lname;
   college;
   city;
   phone;
   userid;
+  dob;
+  course;
+  sem;
   email;
   user: Element;
-  displayedColumns = [ 'name', 'email', 'phone', 'college', 'city', 'edit'];
+  displayedColumns = [ 'fname', 'lname', 'dob', 'email', 'phone', 'course', 'sem', 'college', 'city', 'edit'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
 
@@ -40,7 +44,11 @@ export class UsersComponent implements OnInit {
   }
   saveChanges() {
     const userEdited = {
-      name: this.name,
+      fname: this.fname,
+      dob: this.dob,
+      lname: this.lname,
+      course: this.course,
+      sem: this.sem,
       email: this.email,
       college: this.college,
       city: this.city,
@@ -59,7 +67,11 @@ export class UsersComponent implements OnInit {
   }
   callme(data) {
     console.log(data);
-    this.name = data.userName;
+    this.fname = data.fname;
+    this.sem = data.sem;
+    this.course = data.course;
+    this.dob = data.dob;
+    this.lname = data.lname;
     this.email = data.email;
     this.college = data.college;
     this.city = data.city;
@@ -67,15 +79,15 @@ export class UsersComponent implements OnInit {
     this.userid = data._id;
   }
 }
-export interface Element {
-  _id: string;
-  name: string;
-  email: string;
-  phone: number;
-  city: string;
-  college: string;
-}
+// export interface Element {
+//   _id: string;
+//   fname: string;
+//   email: string;
+//   phone: number;
+//   city: string;
+//   college: string;
+// }
 
- const ELEMENT_DATA: Element[] = [
-  {_id: 'qweqweasd23', name: 'Hydrogen', email: '1.0079', phone: 123, city: '1', college: 'adasd'}
-];
+//  const ELEMENT_DATA: Element[] = [
+//   {_id: 'qweqweasd23', fname: 'Hydrogen', email: '1.0079', phone: 123, city: '1', college: 'adasd'}
+// ];

@@ -13,17 +13,15 @@ import {PageEvent} from '@angular/material';
 })
 export class AllIntroComponent implements OnInit {
   pageEvent: PageEvent;
-  questions;
-  option1;
-  option2;
-  option3;
-  option4;
-  correctAns;
+  title;
+  description;
+  details;
   image;
   introid;
+  delid;
   
   user: Element;
-  displayedColumns = [ 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit'];
+  displayedColumns = [ 'title', 'image', 'description', 'details', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
@@ -36,23 +34,22 @@ export class AllIntroComponent implements OnInit {
     this.updateAllIntroTable();
   }
   updateAllIntroTable() {
-    this.serverService.getUsers().subscribe((data) => {
+    this.serverService.getIntro().subscribe((data) => {
+      console.log(data);
       this.dataSource.data = data;
       this.changeDetectorRefs.detectChanges();
     }, (error) => console.log('Error'));
   }
   saveChanges() {
-    const userEdited = {
-      questions: this.questions,
+    const introEdited = {
+      title: this.title,
+      description: this.description,
+      details: this.details,
       image: this.image,
-      option1: this.option1,
-      option2: this.option2,
-      option3: this.option3,
-      option4: this.option4,
-      correctAns: this.correctAns,
+      _id: this.introid,
     };
-    this.serverService.editedUser = userEdited;
-    this.serverService.editUser(this.introid).subscribe((data) => {
+    this.serverService.editedIntro = introEdited;
+    this.serverService.editIntro(this.introid).subscribe((data) => {
       console.log(data);
     }, (error) => console.log('Error'));
     // this.router.navigate(['users']);
@@ -65,13 +62,25 @@ export class AllIntroComponent implements OnInit {
   }
   callme(data) {
     console.log(data);
-    this.questions = data.questions;
+    this.title = data.title;
     this.image = data.image;
-    this.option1 = data.option1;
-    this.option2 = data.option2;
-    this.option3 = data.option3;
-    this.option4 = data.option4;
-    this.correctAns = data.correctAns;
+    this.description = data.description;
+    this.details = data.details;
     this.introid = data._id;
+  }
+
+  callmeDEL(data) {
+    this.delid= data._id;
+  }
+
+  saveChangesDEL() {
+    const introEdited = {
+      
+      _id: this.delid,
+    };
+    this.serverService.editedQuizDEL = introEdited;
+    this.serverService.delIntro(this.delid).subscribe((data) => {
+      console.log(data);
+    }, (error) => console.log('Error'));
   }
 }

@@ -9,10 +9,11 @@ import { ServerService } from '../serverService';
   styleUrls: ['./enrolledusers.component.scss']
 })
 export class EnrolledusersComponent implements OnInit {pageEvent: PageEvent;
-  displayedColumns = ['name', 'college', 'courses'];
+  displayedColumns = ['fname', 'lname', 'college', 'courses'];
   dataSource = new MatTableDataSource();
   enrolledUser = {
-    name: '',
+    fname: '',
+    lname: '',
     college: '',
     courses: ''
   };
@@ -27,14 +28,16 @@ export class EnrolledusersComponent implements OnInit {pageEvent: PageEvent;
   initializeUserData(data) {
     for (const user of data) {
       this.enrolledUser = {
-        name: '',
+        fname: '',
+        lname: '',
         college: '',
         courses: ''
       };
-      if (user.enrolledCourses.length > 0) {
-        this.enrolledUser.name = user.name;
+      if (user.enrolments.length > 0) {
+        this.enrolledUser.fname = user.fname;
+        this.enrolledUser.lname = user.lname;
         this.enrolledUser.college = user.college;
-        for (const course of user.enrolledCourses) {
+        for (const course of user.enrolments) {
           this.enrolledUser.courses += course + ';';
         }
         console.log(this.enrolledUser);

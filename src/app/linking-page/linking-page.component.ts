@@ -1,3 +1,4 @@
+import {ServerService} from '../serverService';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkingPageComponent implements OnInit {
   a = [];
+  opption = [];
 
-  constructor() {
-    this.a.push(1,2,4,4,4,6,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,44,4,4,4,44,4,4,4,4,4,4,4,65,4,4,69,44,3,4);
+
+  constructor(private fetch: ServerService) {
+    this.a.push(5);
    }
 
   ngOnInit() {
-  }
-
+    this.fetch.getQuiz().subscribe((data) => {
+      for(const i of data){
+        this.opption.push(i);
+      }
+      }, (error) => console.log('Error'));
+   }
 }
