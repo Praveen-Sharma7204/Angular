@@ -40,7 +40,6 @@ export class EnrolledusersComponent implements OnInit {pageEvent: PageEvent;
         for (const course of user.enrolments) {
           this.enrolledUser.courses += course + ';';
         }
-        console.log(this.enrolledUser);
         this.users.push(this.enrolledUser);
       }
     }

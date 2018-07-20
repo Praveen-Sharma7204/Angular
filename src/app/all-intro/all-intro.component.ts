@@ -35,7 +35,6 @@ export class AllIntroComponent implements OnInit {
   }
   updateAllIntroTable() {
     this.serverService.getIntro().subscribe((data) => {
-      console.log(data);
       this.dataSource.data = data;
       this.changeDetectorRefs.detectChanges();
     }, (error) => console.log('Error'));
@@ -50,7 +49,6 @@ export class AllIntroComponent implements OnInit {
     };
     this.serverService.editedIntro = introEdited;
     this.serverService.editIntro(this.introid).subscribe((data) => {
-      console.log(data);
     }, (error) => console.log('Error'));
     // this.router.navigate(['users']);
     // window.location.reload();
@@ -61,7 +59,6 @@ export class AllIntroComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   callme(data) {
-    console.log(data);
     this.title = data.title;
     this.image = data.image;
     this.description = data.description;
@@ -80,7 +77,6 @@ export class AllIntroComponent implements OnInit {
     };
     this.serverService.editedQuizDEL = introEdited;
     this.serverService.delIntro(this.delid).subscribe((data) => {
-      console.log(data);
     }, (error) => console.log('Error'));
   }
 }

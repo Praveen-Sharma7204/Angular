@@ -66,7 +66,6 @@ export class UsersComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   callme(data) {
-    console.log(data);
     this.fname = data.fname;
     this.sem = data.sem;
     this.course = data.course;

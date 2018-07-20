@@ -6,16 +6,16 @@
       <a class="btn float-right info-color text-white waves-light" routerLink="/linking" mdbWavesEffect>Add Module </a>
     </div>
   </div>
-  <div class="modules">
-    <div class="row mt-5">
-      <div class="col-sm-4 animated fadeIn">
+  <div class="modules" >
+    <div class="row mt-5" >
+      <div class="col-sm-4 animated fadeIn" style="padding: 2%" *ngFor="let i of rowArrange" >
         <a routerLink="/currentmodule">
-          <div class="card secondary-color ">
-            <h2 class="card-title p-4 text-white">Module 1</h2>
+          <div class="card secondary-color">
+            <h2 class="card-title p-4 text-white">Mod</h2>
           </div>
         </a>
       </div>
-      <div class="col-sm-4 animated fadeIn">
+      <!-- <div class="col-sm-4 animated fadeIn">
         <a routerLink="/currentmodule">
           <div class="card secondary-color ">
             <h2 class="card-title p-4 text-white">Module 2</h2>
@@ -51,7 +51,7 @@
             <h2 class="card-title p-4 text-white">Module 6</h2>
           </div>
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

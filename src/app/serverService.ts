@@ -47,6 +47,18 @@ export class ServerService {
         }
       );
   }
+  getScores() {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get('http://192.168.0.18:8080/api/scores')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
     // <-- GET QUIZ CATEGORY -->
 getQuiz() {
   const headers = new Headers({
@@ -78,7 +90,20 @@ getIntro() {
   const headers = new Headers({
       'Content-Type': 'application/json'
   });
-  return this.http.get('http://192.168.0.18:8080/api/intro')
+  return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro')
+  .map(
+    (response: Response) => {
+      const data = response.json();
+      return data;
+    }
+  );
+}
+
+getIntroTitle() {
+  const headers = new Headers({
+      'Content-Type': 'application/json'
+  });
+  return this.http.get('http://192.168.0.18:8080/api/intro/title')
   .map(
     (response: Response) => {
       const data = response.json();
@@ -102,7 +127,6 @@ getIntro() {
   editQuiz(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    console.log(this.editedQuiz);
     return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz/' + id, this.editedQuiz, options).map(
       (response: Response) => {
         const data = response.json();
@@ -114,7 +138,6 @@ getIntro() {
   editQuizDEL(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    console.log(this.editedQuiz);
     return this.http.delete('http://192.168.0.18:8080/api/quiz/' + id).map(
       (response: Response) => {
         const data = response.json();
@@ -127,8 +150,7 @@ getIntro() {
   delIntro(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    console.log(this.editedQuiz);
-    return this.http.delete('http://192.168.0.18:8080/api/intro/' + id).map(
+    return this.http.delete('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/' + id).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -139,8 +161,7 @@ getIntro() {
   editIntro(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    console.log(this.editedIntro);
-    return this.http.put('http://192.168.0.18:8080/api/intro/' + id, this.editedIntro, options).map(
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/' + id, this.editedIntro, options).map(
       (response: Response) => {
         const data = response.json();
         return data;

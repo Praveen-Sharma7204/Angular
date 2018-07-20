@@ -80,7 +80,7 @@
             <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
               <span aria-hidden="true">×</span>
             </button>
-            <h4 class="modal-title w-100" id="myModalLabel">Update Quiz</h4>
+            <h4 class="modal-title w-100" id="myModalLabel">Edit Intro</h4>
           </div>
 
 
@@ -89,30 +89,30 @@
 
 
 
-
+          <!-- http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com -->
           <div class="modal-body">
-            <form ngNoForm role="form" method="POST" [action]="'http://192.168.0.18:8080/api/intro/edit/'+introid" enctype="multipart/form-data">
+            <form ngNoForm role="form" method="POST" [action]="'http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/'+introid" enctype="multipart/form-data">
               <div class="md-form">
                 <div class="col-lg-12">
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="Title for Intro" [(ngModel)]="title" name="title">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="Title for Intro" [(ngModel)]="title" name="title" required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="description" [(ngModel)]="description" name="description">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="description" [(ngModel)]="description" name="description" required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details"required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="file" name="image" id="inputEmail3MD">
+                        <input type="file" name="image" id="inputEmail3MD"  required>
                       </div>
                     </div>
 
@@ -120,7 +120,7 @@
                 </div>
               </div>
               <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-              <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Sav changes</button>
+              <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
             </form>
           </div>
 

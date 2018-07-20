@@ -36,7 +36,6 @@ export class CurrentModuleComponent implements OnInit {
     }
   }
   redo1() {
-    console.log('clicked');
     if (this.list1 === true) {
       this.name1 = true;
       this.list1 = false;

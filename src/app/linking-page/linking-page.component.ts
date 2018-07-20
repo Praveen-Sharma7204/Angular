@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class LinkingPageComponent implements OnInit {
   a = [];
   opption = [];
+  opptionIntro = [];
 
 
   constructor(private fetch: ServerService) {
@@ -21,5 +22,11 @@ export class LinkingPageComponent implements OnInit {
         this.opption.push(i);
       }
       }, (error) => console.log('Error'));
+
+      this.fetch.getIntroTitle().subscribe((data) => {
+        for(const i of data){
+          this.opptionIntro.push(i.title);
+        }
+        }, (error) => console.log('Error'));
    }
 }

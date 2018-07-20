@@ -18,7 +18,7 @@
                     <div class="md-form mt-0">
                       <!-- <select ng-model="def"> -->
                       <select (click)="hideCategory()" [(ngModel)]="category" name="category" class="form-control" id="inputEmail3MD" placeholder="Enter Your Category">
-                        <option>Select category</option>
+                        <!-- <option>Select category</option> -->
                         <option *ngFor="let i of opption">{{ i }}</option>
                         <option>Create New</option>
                         <!-- <input type="hidden" name="category" value => -->
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="md-form mt-0" *ngIf="!hide">
-                      <input name="category" type="text" [(ngModel)]="category" class="form-control" id="inputEmail3MD" placeholder="New Categorie Name">
+                      <input name="category" type="text" [(ngModel)]="category" class="form-control" id="inputEmail3MD" placeholder="New Categorie Name" required>
                     </div>
 
                     <!-- <div class="md-form mt-0">
@@ -45,15 +45,14 @@
                   <label id="inputEmail3MD" class="col-sm-2 col-form-label">Question</label>
                   <div class="col-sm-10">
                     <div class="md-form mt-0">
-                      <input name="question" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Question">
+                      <input name="question" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Question" required>
                     </div>
                     <div class="md-form mt-0">
                       <input name="mediaURL" type="file" class="" placeholder="">
-                      <select name="mediaType" style=" margin-left: 25%;">
+                      <!-- <select name="mediaType" style=" margin-left: 25%;">
                         <option>text</option>
                         <option>image</option>
-                        <!-- <option>Create New</option> -->
-                      </select>
+                      </select> -->
                     </div>
                   </div>
                 </div>
@@ -64,11 +63,11 @@
                   <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 1</label>
                   <div class="col-sm-10">
                     <div class="md-form mt-0">
-                      <input name="option1" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 1">
+                      <input name="option1" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 1" required>
                     </div>
                     <div class="md-form mt-0">
                       <span class="mr-2">Correct Option</span>
-                      <input value="1" type="radio" name="correctAns" />
+                      <input value="1" type="radio" name="correctAns"  required/>
                     </div>
                   </div>
                 </div>
@@ -79,7 +78,7 @@
                   <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 2</label>
                   <div class="col-sm-10">
                     <div class="md-form mt-0">
-                      <input name="option2" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 2">
+                      <input name="option2" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 2" required>
                     </div>
                     <div class="md-form mt-0">
                       <span class="mr-2">Correct Option</span>
@@ -95,7 +94,7 @@
                   <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 3</label>
                   <div class="col-sm-10">
                     <div class="md-form mt-0">
-                      <input name="option3" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 3">
+                      <input name="option3" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 3"required>
                     </div>
                     <div class="md-form mt-0">
                       <span class="mr-2">Correct Option</span>
@@ -110,7 +109,7 @@
                   <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 4</label>
                   <div class="col-sm-10">
                     <div class="md-form mt-0">
-                      <input name="option4" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 4">
+                      <input name="option4" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 4" required>
                     </div>
                     <div class="md-form mt-0">
                       <span class="mr-2">Correct Option</span>

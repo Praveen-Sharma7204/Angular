@@ -76,7 +76,6 @@ export class AllQuizComponent implements OnInit {
     };
     this.serverService.editedQuiz = quizEdited;
     this.serverService.editQuiz(this.quizid).subscribe((data) => {
-      console.log(data);
     }, (error) => console.log('Error'));
     // this.router.navigate(['users']);
     // window.location.reload();
@@ -87,7 +86,6 @@ export class AllQuizComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
   callme(data) {
-    console.log(data);
     this.question = data.question.qstn;
     this.imageURL = data.imageURL;
     this.mediaType = data.mediaType;
@@ -111,7 +109,6 @@ export class AllQuizComponent implements OnInit {
     };
     this.serverService.editedQuizDEL = quizEdited;
     this.serverService.editQuizDEL(this.delid).subscribe((data) => {
-      console.log(data);
     }, (error) => console.log('Error'));
     // this.router.navigate(['users']);
     // window.location.reload();
