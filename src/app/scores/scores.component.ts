@@ -14,11 +14,11 @@ import { Router } from '@angular/router';
 export class ScoresComponent implements OnInit {
 
   pageEvent: PageEvent;
-  userName;
+  fname;
   courseName;
   moduleScore;
   totalScore;
-  displayedColumns = ['userName', 'courseName', 'moduleScore', 'totalScore'];
+  displayedColumns = ['fname', 'lname', 'courseName', 'moduleScore', 'totalScore'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
@@ -36,7 +36,7 @@ export class ScoresComponent implements OnInit {
   }
   callme(data) {
     console.log(data);
-    this.userName = data.userName;
+    this.fname = data.lname;
     this.moduleScore = data.moduleScore;
     this.totalScore = data.totalScore;
     this.courseName = data.courseName;
