@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../serverService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   selectedCourse;
   data = [];
 
-  constructor(private serverService: ServerService) {
+  constructor(private serverService: ServerService, private router: Router) {
   }
 
   ngOnInit() {
@@ -21,10 +22,14 @@ export class HomeComponent implements OnInit {
   }
   initializeCourseData(data) {
     for (const course of data) {
-      // this.selectedCourse = data._id;
       // console.log(this.selectedCourse);
       this.data.push(course);
     }
+  }
+  selectCourse(id)  {
+    this.router.navigate(['/module']);
+    this.serverService.selectCourse = id;
+
   }
 
 }

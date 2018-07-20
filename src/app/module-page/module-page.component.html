@@ -2,13 +2,13 @@
 <div class="container">
   <div class="row mt-5 pt-5">
     <div class="col module-header">
-      <h2>Smart student Challenge Modules </h2>
+      <h2>{{ name }} </h2>
       <a class="btn float-right info-color text-white waves-light" routerLink="/linking" mdbWavesEffect>Add Module </a>
     </div>
   </div>
   <div class="modules" >
     <div class="row mt-5" >
-      <div class="col-sm-4 animated fadeIn" style="padding: 2%" *ngFor="let i of rowArrange" >
+      <div class="col-sm-4 animated fadeIn" style="padding: 2%" *ngFor="let i of option" >
         <a routerLink="/currentmodule">
           <div class="card secondary-color">
             <h2 class="card-title p-4 text-white">Mod</h2>

@@ -8,3 +8,12 @@
 .mask{
     background: linear-gradient( to top right, #aa66cca8, #33b5e56e );
 }
+.card{
+    height: 350px;
+}
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    text-overflow: ellipsis;
+}

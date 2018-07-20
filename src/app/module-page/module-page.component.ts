@@ -9,27 +9,28 @@ import { ServerService } from '../serverService';
 export class ModulePageComponent implements OnInit {
   option = [];
   data = [];
-  rowArrange = [];
-
-  constructor() {
+  name;
+  constructor(private serverService: ServerService) {
    }
 
   ngOnInit() {
-    this.rowArrange.push(1, 2, 4, 5, 3);
-    // this.serverService.getCourses().subscribe((data) => {
-    //   // console.log(data);
-    //   for(const i of data){
-    //     this.option.push(i.modules);
-    //     console.log(i.modules);
-    //   }
-    //   }, (error) => console.log('Error'));
-    
+    this.serverService.getCourses().subscribe((data) => {
+      for (const i of data) {
+        if (this.serverService.selectCourse === i._id ) {
+          for (const j of i.modules) {
+          this.name = i.courseName;
+            this.option.push(j);
+          }
+          console.log(i);
+        }
+      }
+      }, (error) => console.log('Error'));
   }
 
-  // initializeCourseData(data) {
-  //   for (const course of data) {
-  //     this.data.push(course);
-  //   }
-  // }
+  initializeCourseData(data) {
+    for (const course of data) {
+      this.data.push(course);
+    }
+  }
 
 }

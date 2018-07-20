@@ -21,6 +21,7 @@ export class ServerService {
   editedQuizDEL = {};
   quizData;
   quizFlag = 0;
+  selectCourse;
   constructor(private http: Http) {
   }
   getCourses() {
@@ -145,7 +146,7 @@ getIntroTitle() {
       }
     );
   }
-//http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com
+// http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com
 
   delIntro(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -156,7 +157,7 @@ getIntroTitle() {
         return data;
       }
     );
-  }  
+  }
 
   editIntro(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
