@@ -21,7 +21,6 @@ export class ModulePageComponent implements OnInit {
           this.name = i.courseName;
             this.option.push(j);
           }
-          console.log(i);
         }
       }
       }, (error) => console.log('Error'));

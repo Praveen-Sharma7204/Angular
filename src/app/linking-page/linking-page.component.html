@@ -1,36 +1,29 @@
 <app-header></app-header>
-<div class="container">
-  <div class="row mt-5 pt-5">
-    <div class="col module-header">
-      <h1>Add New Module</h1>
-
+<form ngNoForm role="form" method="POST" [action]="'http://192.168.0.18:8080/api/course/'+courseid" enctype="multipart/form-data">
+  <div class="container">
+    <div class="row mt-5 pt-5">
+      <div class="col module-header">
+        <h1>Add New Module</h1>
+      </div>
     </div>
-  </div>      
-  <div class="row">
-    <div class="col-lg-4 mt-4 animated fadeIn">
-      <div class="card text-white info-color">
-        <div class="card-body">
-          <div class="col-sm-12">
-            <h2 class="">Intro</h2>
-          </div>
-          <p>Choose the Intro For the Module </p>
-          <div class="input-group mb-3">
-            <!-- <select class="custom-select" id="inputGroupSelect02">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select> -->
-            <select class="custom-select" id="inputGroupSelect02" >
-              <option>Select category</option>
-              <option *ngFor="let i of opptionIntro">{{ i }}</option>
-          </select>
-            
+    <div class="row">
+      <div class="col-lg-4 mt-4 animated fadeIn">
+        <div class="card text-white info-color">
+          <div class="card-body">
+            <div class="col-sm-12">
+              <h2 class="">Intro</h2>
+            </div>
+            <p>Choose the Intro For the Module </p>
+            <div class="input-group mb-3">
+              <select class="custom-select" id="inputGroupSelect02">
+                <option>Select category</option>
+                <option *ngFor="let i of opptionIntro">{{ i }}</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 mt-4 animated fadeIn">
+      <!-- <div class="col-lg-4 mt-4 animated fadeIn">
       <div class="card text-white success-color">
         <div class="card-body">
           <div class="col-sm-12">
@@ -44,47 +37,29 @@
               <option value="2">Two</option>
               <option value="3">Three</option>
             </select>
-            
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 mt-4 animated fadeIn">
-      <div class="card text-white danger-color">
-        <div class="card-body">
-          <div class="col-sm-12">
-            <h2 class="">Quiz</h2>
-          </div>
-          <p>Choose the Intro For the Module </p>
-          <!-- <div class="input-group mb-3" >
-            <select class="custom-select" id="inputGroupSelect02">
-
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            
-          </div> -->
-
-          <div class="input-group mb-3" >
+    </div> -->
+      <div class="col-lg-4 mt-4 animated fadeIn">
+        <div class="card text-white danger-color">
+          <div class="card-body">
+            <div class="col-sm-12">
+              <h2 class="">Quiz</h2>
+            </div>
+            <p>Choose the Intro For the Module </p>
+            <div class="input-group mb-3">
               <select class="custom-select" id="inputGroupSelect02">
-                  <option>Select category</option>
-                  <option *ngFor="let i of opption">{{ i }}</option>
+                <option>Select category</option>
+                <option *ngFor="let i of opption">{{ i }}</option>
               </select>
-            <!-- <select class="custom-select" style = "padding-right: 8%;" id="inputGroupSelect03" >
-              <option selected>Choose...</option>
-              <option *ngFor = "let i of a">{{ i }}</option>
-            </select> -->
+            </div>
           </div>
-          <!-- <p style="padding: 2%"> / {{ a.length }}  </p> -->
-
-
         </div>
       </div>
-    </div>
-    <div class="save-button mt-3" style="width:100%">
-        <a class="btn secondary-color text-white float-right  waves-light" routerLink="/module" mdbWavesEffect>save </a>
+      <div class="save-button mt-3" style="width:100%">
+        <a type="submit" class="btn secondary-color text-white float-right  waves-light" routerLink="/module" mdbWavesEffect>save </a>
+      </div>
     </div>
   </div>
-</div>
+</form>

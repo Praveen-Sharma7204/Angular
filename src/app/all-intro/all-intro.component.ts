@@ -19,7 +19,6 @@ export class AllIntroComponent implements OnInit {
   image;
   introid;
   delid;
-  
   user: Element;
   displayedColumns = [ 'title', 'image', 'description', 'details', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
@@ -67,12 +66,11 @@ export class AllIntroComponent implements OnInit {
   }
 
   callmeDEL(data) {
-    this.delid= data._id;
+    this.delid = data._id;
   }
 
   saveChangesDEL() {
     const introEdited = {
-      
       _id: this.delid,
     };
     this.serverService.editedQuizDEL = introEdited;

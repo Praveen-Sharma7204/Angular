@@ -28,7 +28,7 @@ export class ServerService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course')
+    return this.http.get('http://192.168.0.18:8080/api/course')
       .map(
         (response: Response) => {
           const data = response.json();
