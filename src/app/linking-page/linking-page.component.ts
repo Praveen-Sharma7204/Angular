@@ -11,6 +11,9 @@ export class LinkingPageComponent implements OnInit {
   opption = [];
   opptionIntro = [];
   courseid;
+  titleName;
+  cat;
+  moduleName;
 
   constructor(private fetch: ServerService) {
     this.a.push(5);
@@ -36,7 +39,17 @@ export class LinkingPageComponent implements OnInit {
                 this.courseid = i._id;
             }
           }
-          console.log(this.courseid);
           }, (error) => console.log('Error'));
    }
+
+   saveChanges() {
+    const moduleEdited = {
+      titleName: this.titleName,
+      moduleName: this.moduleName,
+      category: this.cat,
+    };
+    this.fetch.editedModule = moduleEdited;
+    this.fetch.editCourseModule(this.courseid).subscribe((data) => {
+    }, (error) => console.log('Error'));
+}
 }

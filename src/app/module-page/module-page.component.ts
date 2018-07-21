@@ -10,6 +10,8 @@ export class ModulePageComponent implements OnInit {
   option = [];
   data = [];
   name;
+  moduleName = [];
+
   constructor(private serverService: ServerService) {
    }
 
@@ -19,11 +21,14 @@ export class ModulePageComponent implements OnInit {
         if (this.serverService.selectCourse === i._id ) {
           for (const j of i.modules) {
           this.name = i.courseName;
-            this.option.push(j);
-          }
+          // this.moduleName.push(j.moduleName);
+          this.option.push(j);
+          console.log(j);
+        }
         }
       }
       }, (error) => console.log('Error'));
+      console.log(this.name);
   }
 
   initializeCourseData(data) {

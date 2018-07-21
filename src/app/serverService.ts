@@ -22,6 +22,7 @@ export class ServerService {
   quizData;
   quizFlag = 0;
   selectCourse;
+  editedModule;
   constructor(private http: Http) {
   }
   getCourses() {
@@ -139,7 +140,7 @@ getIntroTitle() {
   editQuizDEL(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.delete('http://192.168.0.18:8080/api/quiz/' + id).map(
+    return this.http.delete('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz/' + id).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -163,6 +164,17 @@ getIntroTitle() {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/' + id, this.editedIntro, options).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
+  editCourseModule(id) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put('http://192.168.0.18:8080/api/course/' + id, this.editedModule, options).map(
       (response: Response) => {
         const data = response.json();
         return data;

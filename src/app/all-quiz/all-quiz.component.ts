@@ -49,13 +49,13 @@ export class AllQuizComponent implements OnInit {
     //     data.question.mediaURL = "https://www.freeiconspng.com/uploads/no-image-icon-15.png";
     // }
     this.dataSource.data = data;
-    for(const i of data){
+    for (const i of data) {
       for (const j of this.category)  {
-        if (i.category == j)  {
+        if (i.category === j)  {
           this.flag = 1;
         }
       }
-      if (this.flag == 0){
+      if (this.flag === 0) {
       this.category.push(i.category);
       }
       this.flag = 0;
@@ -63,7 +63,6 @@ export class AllQuizComponent implements OnInit {
   }
   saveChanges() {
     const quizEdited = {
-      
       question: this.question,
       imageURL: this.imageURL,
       option1: this.option1,
@@ -99,12 +98,11 @@ export class AllQuizComponent implements OnInit {
   }
 
   callmeDEL(data) {
-    this.delid= data._id;
+    this.delid = data._id;
   }
 
   saveChangesDEL() {
     const quizEdited = {
-      
       _id: this.delid,
     };
     this.serverService.editedQuizDEL = quizEdited;
