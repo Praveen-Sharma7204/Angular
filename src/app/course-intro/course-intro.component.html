@@ -1,0 +1,56 @@
+<app-header></app-header>
+<form >
+  <div class="container">
+    <div class="row mt-5 pt-5">
+      <div class="col module-header">
+        <h1>Add New Course Intro</h1>
+      </div>
+    </div>
+    <div class="row">
+
+        <!-- <div class="col-lg-4 mt-4 animated fadeIn float-left">
+            <div class="card text-white danger-color">
+              <div class="card-body">
+                <div class="col-sm-12">
+                  <h2 class="">Present Intro</h2>
+                </div>
+                <div class="input-group mb-3">
+                    <p>Course Intro </p>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+      <div class="col-lg-4 mt-4 animated fadeIn float-right">
+        <div class="card text-white info-color">
+          <div class="card-body">
+            <div class="col-sm-12">
+              <h2 class="">Intro</h2>
+            </div>
+            <p>Change Present Intro? </p>
+            <div class="input-group mb-3">
+              <select class="custom-select" [(ngModel)] = "titleName" name = "titleName" id="inputGroupSelect02">
+                <option>Select category</option>
+                <option *ngFor="let i of opptionIntro">{{ i }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+
+
+      <div class="save-button mt-3" style="width:100%">
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-light" aria-label="Close" routerLink="/module" mdbWavesEffect>Close</button>
+            <button type="button" class="btn btn-primary relative waves-light" (click)="saveChanges();" routerLink="/module" mdbWavesEffect>Save changes</button>
+          </div>
+      </div>
+      </div>
+
+
+
+    </div>
+    </div>
+  
+
+</form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../serverService';
+import { CourseIntroComponent } from '../course-intro/course-intro.component';
 
 @Component({
   selector: 'app-module-page',
@@ -11,24 +12,33 @@ export class ModulePageComponent implements OnInit {
   data = [];
   name;
   moduleName = [];
+  optionIntro = [];
+  courseIntro;
 
-  constructor(private serverService: ServerService) {
+  constructor(private fetch: ServerService) {
    }
 
   ngOnInit() {
-    this.serverService.getCourses().subscribe((data) => {
+    this.fetch.getIntroTitle().subscribe((data) => {
       for (const i of data) {
-        if (this.serverService.selectCourse === i._id ) {
+        this.optionIntro.push(i.title);
+      }
+      }, (error) => console.log('Error'));
+
+    this.fetch.getCourses().subscribe((data) => {
+      for (const i of data) {
+        if (this.fetch.selectCourse === i._id ) {
           for (const j of i.modules) {
           this.name = i.courseName;
           // this.moduleName.push(j.moduleName);
           this.option.push(j);
-          console.log(j);
         }
+        this.courseIntro = i.courseIntro;
         }
       }
       }, (error) => console.log('Error'));
-      console.log(this.name);
+  console.log(this.courseIntro);
+
   }
 
   initializeCourseData(data) {

@@ -174,7 +174,7 @@ getIntroTitle() {
   editCourseModule(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://192.168.0.18:8080/api/course/' + id, this.editedModule, options).map(
+    return this.http.put('http://192.168.0.18:8080/api/course/module/' + id, this.editedModule, options).map(
       (response: Response) => {
         const data = response.json();
         return data;

@@ -3,12 +3,48 @@
   <div class="row mt-5 pt-5">
     <div class="col module-header">
       <h2>{{ name }} </h2>
-      <a class="btn float-right info-color text-white waves-light" routerLink="/linking" mdbWavesEffect>Add Module</a>
+      <a class="btn info-color text-white waves-light" routerLink="/linking" mdbWavesEffect>Add Module</a>
     </div>
   </div>
-  <div class="modules" >
-    <div class="row mt-5" >
-      <div class="col-sm-4 animated fadeIn" style="padding: 2%" *ngFor="let i of option" >
+
+  <div class="modules">
+    <div class="row mt-5 justify-content-center">
+
+      <!-- <div class="card text-white info-color">
+                <div class="card-body">
+                  <div class="col-sm-4">
+                    <h2 class="">Intro</h2>
+                  </div>
+                  <p>Change Present Intro? </p>
+                  <div class="input-group mb-3">
+                    <select class="custom-select" [(ngModel)] = "titleName" name = "titleName" id="inputGroupSelect02">
+                      <option>Select category</option>
+                      <option *ngFor="let i of opptionIntro">{{ i }}</option>
+                    </select>
+                  </div>
+                </div> -->
+
+      <div class="info-color col-sm-12 card animated fadeIn" style="padding: 2%">
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+        <h2 class="card-title text-white " style = "display: inline-flex">Present Intro:
+          <div class="text-white">
+            <h4 class="introDisplay">{{ courseIntro }}</h4>
+          </div>
+        </h2>
+        <select class="custom-select" [(ngModel)]="courseIntro" name="courseIntro" id="inputGroupSelect02">
+          <option>Change Intro</option>
+          <option *ngFor="let i of optionIntro">{{ i }}</option>
+        </select>
+        <button type="button" style="display:inline-flex" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="row mt-5">
+
+      <div class="col-sm-4 animated fadeIn" style="padding: 2%;" *ngFor="let i of option">
         <a routerLink="/currentmodule">
           <div class="card secondary-color">
             <h2 class="card-title p-4 text-white"> {{ i.moduleName }}</h2>

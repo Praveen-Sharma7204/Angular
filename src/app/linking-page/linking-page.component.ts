@@ -14,6 +14,7 @@ export class LinkingPageComponent implements OnInit {
   titleName;
   cat;
   moduleName;
+  gameTitle;
 
   constructor(private fetch: ServerService) {
     this.a.push(5);
@@ -45,6 +46,7 @@ export class LinkingPageComponent implements OnInit {
    saveChanges() {
     const moduleEdited = {
       titleName: this.titleName,
+      gameTitle: this.gameTitle,
       moduleName: this.moduleName,
       category: this.cat,
     };
