@@ -32,11 +32,13 @@
             <h4 class="introDisplay">{{ courseIntro }}</h4>
           </div>
         </h2>
+        <form>
         <select class="custom-select" [(ngModel)]="courseIntro" name="courseIntro" id="inputGroupSelect02">
           <option>Change Intro</option>
           <option *ngFor="let i of optionIntro">{{ i }}</option>
         </select>
-        <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
+        <button type="submit" style = "width: 100%; margin-left: 0px;" class="btn btn-primary relative waves-light" (click)="saveChanges()" mdbWavesEffect>Save changes</button>
+        </form>
       </div>
     </div>
     </div>

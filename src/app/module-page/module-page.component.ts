@@ -14,6 +14,7 @@ export class ModulePageComponent implements OnInit {
   moduleName = [];
   optionIntro = [];
   courseIntro;
+  changeIntro;
 
   constructor(private fetch: ServerService) {
    }
@@ -47,4 +48,13 @@ export class ModulePageComponent implements OnInit {
     }
   }
 
+  saveChanges() {
+    const changeCourseIntro = {
+      // _id: this.fetch.selectCourse,
+      courseIntro: this.courseIntro,
+    };
+    this.fetch.changeIntroVar = changeCourseIntro;
+    this.fetch.changeIntroFun(this.fetch.selectCourse, changeCourseIntro).subscribe((data) => {
+    }, (error) => console.log('Error'));
+  }
 }

@@ -19,7 +19,7 @@
           <div class="card-body">
             <h4 class="card-title">{{item.courseName }}</h4>
             <p class="card-text">{{item.description | slice:0:108}}...</p>
-            <a class="btn secondary-color text-white waves-light" (click)="selectCourse(item._id)"  mdbWavesEffect>View</a>
+            <a class="btn secondary-color text-white waves-light btnView" (click)="selectCourse(item._id)"  mdbWavesEffect>View</a>
             <!-- <td mat-cell *matCellDef="let element" (click)="basicModal.show();callme(element);"> -->
               <!-- <span style="display: inline; position: absolute" class="fa fa-pencil"></span>|<span class="fa fa-trash"></span> -->
           </div>

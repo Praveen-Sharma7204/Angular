@@ -23,6 +23,8 @@ export class ServerService {
   quizFlag = 0;
   selectCourse;
   editedModule;
+  changeIntroVar;
+  changeCourseIntro;
   constructor(private http: Http) {
   }
   getCourses() {
@@ -181,4 +183,16 @@ getIntroTitle() {
       }
     );
   }
+
+  changeIntroFun(id, introObject) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put('http://192.168.0.18:8080/api/course/' + id, introObject, options).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
 }
