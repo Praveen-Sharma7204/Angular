@@ -1,0 +1,65 @@
+.loginBody  {
+    background-image: url('../../assets/Symbol.png');
+    background-size: cover;
+}
+
+.mainSection    {
+    margin: 0 auto;
+    margin-top: 50%;
+    padding : 0;
+}
+
+.modelContent   {
+    background-color: #0c0b18;
+    opacity: .85;
+    padding: 0 18px;
+    box-shadow: 0px 3px 3px #848484;
+    border-radius: 08px;
+}
+
+.adminLogo  {
+    // margin-top: -50px;
+    margin-bottom: 35px;
+}
+
+.adminLogo img  {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    margin-top: -45PX;
+    box-shadow: 0px 2px 3px #5d5353;
+}
+
+.formGroup  {
+    margin-bottom: 25px;
+}
+
+.formGroup input {
+    height: 42px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 18px;
+    padding-left: 34px;
+}
+
+.adminIcon  {
+    position: absolute;
+    font-size: 22px;
+    left : 28px;
+    color: #848484;
+    padding-top: 10px;
+}
+
+.logBtn  {
+    margin: 5px 0 25px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 3px #5d5353;
+}
+
+.forgot {
+    padding: 5px 0 25px; 
+}
+
+.forgot a{
+    color: #5d5353;
+}

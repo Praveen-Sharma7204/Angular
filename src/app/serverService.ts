@@ -195,4 +195,10 @@ getIntroTitle() {
     );
   }
 
+  postLoginData(formdata) {
+    console.log(formdata);
+    return this.http.post('xxxxxxxxxxxxxxxxxx/' + '/api/client/login', formdata);
+
+  }
+
 }
