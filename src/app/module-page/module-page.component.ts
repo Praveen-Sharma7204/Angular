@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../serverService';
-import { CourseIntroComponent } from '../course-intro/course-intro.component';
+// import { CourseIntroComponent } from '../course-intro/course-intro.component';
 
 @Component({
   selector: 'app-module-page',
@@ -31,7 +31,7 @@ export class ModulePageComponent implements OnInit {
         if (this.fetch.selectCourse === i._id ) {
           for (const j of i.modules) {
           this.name = i.courseName;
-          // this.moduleName.push(j.moduleName);
+          this.moduleName.push(j.moduleName);
           this.option.push(j);
         }
         this.courseIntro = i.courseIntro;
@@ -39,7 +39,7 @@ export class ModulePageComponent implements OnInit {
       }
       }, (error) => console.log('Error'));
   console.log(this.courseIntro);
-
+  console.log(this.fetch.selectCourse);
   }
 
   initializeCourseData(data) {

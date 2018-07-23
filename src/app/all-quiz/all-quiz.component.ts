@@ -1,9 +1,9 @@
-import { Component, OnInit , ViewChild, ChangeDetectorRef} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
-import {SelectionModel} from '@angular/cdk/collections';
-import {ServerService} from '../serverService';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
+import { ServerService } from '../serverService';
 import { Router } from '@angular/router';
-import {PageEvent} from '@angular/material';
+import { PageEvent } from '@angular/material';
 
 
 @Component({
@@ -29,34 +29,30 @@ export class AllQuizComponent implements OnInit {
 
 
   user: Element;
-  displayedColumns = [ 'category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit', 'delete'];
+  displayedColumns = ['category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
 
-   }
-   @ViewChild(MatPaginator) paginator: MatPaginator;
+  }
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-   ngOnInit() {
+  ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.serverService.getAllQuiz().subscribe((data) => {
       this.updateAllQuizTable(data);
-  }, (error) => console.log('Error'));
+    }, (error) => console.log('Error'));
   }
   updateAllQuizTable(data) {
-    // for (const i of data){
-    //   if(i.question.mediaURL == "")
-    //     data.question.mediaURL = "https://www.freeiconspng.com/uploads/no-image-icon-15.png";
-    // }
     this.dataSource.data = data;
     for (const i of data) {
-      for (const j of this.category)  {
-        if (i.category === j)  {
+      for (const j of this.category) {
+        if (i.category === j) {
           this.flag = 1;
         }
       }
       if (this.flag === 0) {
-      this.category.push(i.category);
+        this.category.push(i.category);
       }
       this.flag = 0;
     }

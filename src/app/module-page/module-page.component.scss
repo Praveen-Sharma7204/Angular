@@ -1,10 +1,6 @@
-// .modules .card{
-    // background-image: linear-gradient( to right, #aa66cc,#9933CC);
-// }
-
 .module-header a{
     position: absolute;
-    top: -10px;
+    top: 5px;
     right: 0;
 }
 
@@ -12,4 +8,17 @@
     font-size: 26px;
     margin-top: 5px;
     margin-left: 5px;
+}
+
+.introName  {
+    text-align: center;
+    color: snow;
+}
+
+.whiteBackground    {
+    background: white;
+}
+
+.heddderName    {
+    width: 100%;
 }

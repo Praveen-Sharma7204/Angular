@@ -33,17 +33,17 @@ import {
 } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { CourseIntroComponent } from './course-intro/course-intro.component';
+// import { CourseIntroComponent } from './course-intro/course-intro.component';
 
 
 export const router: Routes = [
-  // { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
-  // { path: '', component: LoginComponent },
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent},
+  // { path: 'login', component: LoginComponent},
+  { path: '', component: LoginComponent },
+  // { path: '', component: HomeComponent },
   { path: 'createquiz', component: CreateQuizComponent },
   { path: 'module', component: ModulePageComponent },
-  { path: 'course-intro', component: CourseIntroComponent},
+  // { path: 'course-intro', component: CourseIntroComponent},
   { path: 'linking', component: LinkingPageComponent },
   { path: 'currentmodule', component: CurrentModuleComponent },
   { path: 'users', component: UsersComponent },
@@ -71,7 +71,7 @@ export const router: Routes = [
     AllQuizComponent,
     LoginComponent,
     HeaderComponent,
-    CourseIntroComponent,
+    // CourseIntroComponent,
   ],
   imports: [
     BrowserModule,

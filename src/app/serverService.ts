@@ -25,13 +25,15 @@ export class ServerService {
   editedModule;
   changeIntroVar;
   changeCourseIntro;
+  selectedModule;
+
   constructor(private http: Http) {
   }
   getCourses() {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.get('http://192.168.0.18:8080/api/course')
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course')
       .map(
         (response: Response) => {
           const data = response.json();
@@ -55,7 +57,7 @@ export class ServerService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.get('http://192.168.0.18:8080/api/scores')
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/scores')
       .map(
         (response: Response) => {
           const data = response.json();
@@ -63,60 +65,70 @@ export class ServerService {
         }
       );
   }
-    // <-- GET QUIZ CATEGORY -->
-getQuiz() {
-  const headers = new Headers({
+  // <-- GET QUIZ CATEGORY -->
+  getQuiz() {
+    const headers = new Headers({
       'Content-Type': 'application/json'
-  });
-  return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz/category')
-  .map(
-    (response: Response) => {
-      const data = response.json();
-      return data;
-    }
-  );
-}
+    });
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz/category')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
 
-getAllQuiz() {
-  const headers = new Headers({
+  getAllQuiz() {
+    const headers = new Headers({
       'Content-Type': 'application/json'
-  });
-  return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz')
-  .map(
-    (response: Response) => {
-      const data = response.json();
-      return data;
-    }
-  );
-}
+    });
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
 
-getIntro() {
-  const headers = new Headers({
+  getIntro() {
+    const headers = new Headers({
       'Content-Type': 'application/json'
-  });
-  return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro')
-  .map(
-    (response: Response) => {
-      const data = response.json();
-      return data;
-    }
-  );
-}
+    });
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
 
-getIntroTitle() {
-  const headers = new Headers({
+  getIntroTitle() {
+    const headers = new Headers({
       'Content-Type': 'application/json'
-  });
-  return this.http.get('http://192.168.0.18:8080/api/intro/title')
-  .map(
-    (response: Response) => {
-      const data = response.json();
-      return data;
-    }
-  );
-}
-// http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com
-
+    });
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/title')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
+  getAllGames() {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get('http://192.168.0.18:8080/api/game')
+      .map(
+        (response: Response) => {
+          const data = response.json();
+          return data;
+        }
+      );
+  }
   editUser(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
@@ -149,7 +161,7 @@ getIntroTitle() {
       }
     );
   }
-// http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com
+  // http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com
 
   delIntro(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -176,7 +188,8 @@ getIntroTitle() {
   editCourseModule(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://192.168.0.18:8080/api/course/module/' + id, this.editedModule, options).map(
+    // tslint:disable-next-line:max-line-length
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course/module/' + id, this.editedModule, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -187,7 +200,7 @@ getIntroTitle() {
   changeIntroFun(id, introObject) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://192.168.0.18:8080/api/course/' + id, introObject, options).map(
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course/' + id, introObject, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
