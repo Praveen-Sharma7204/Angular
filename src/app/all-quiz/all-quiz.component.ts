@@ -72,12 +72,10 @@ export class AllQuizComponent implements OnInit {
     this.serverService.editedQuiz = quizEdited;
     this.serverService.editQuiz(this.quizid).subscribe((data) => {
     }, (error) => console.log('Error'));
-    // this.router.navigate(['users']);
-    // window.location.reload();
   }
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
   callme(data) {
@@ -104,7 +102,5 @@ export class AllQuizComponent implements OnInit {
     this.serverService.editedQuizDEL = quizEdited;
     this.serverService.editQuizDEL(this.delid).subscribe((data) => {
     }, (error) => console.log('Error'));
-    // this.router.navigate(['users']);
-    // window.location.reload();
   }
 }
