@@ -1,10 +1,11 @@
 <app-header></app-header>
-<form >
+<form>
   <div class="container">
     <div class="row mt-5 pt-5">
       <div class="col module-header">
         <h1>Add New Module</h1>
-        <input name="moduleName" [(ngModel)] = "moduleName" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Module Name" required>
+        <input name="moduleName" [(ngModel)]="moduleName" type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Module Name"
+          required>
       </div>
     </div>
     <div class="row">
@@ -16,7 +17,7 @@
             </div>
             <p>Choose the Intro For the Module </p>
             <div class="input-group mb-3">
-              <select class="custom-select" [(ngModel)] = "titleName" name = "titleName" id="inputGroupSelect02">
+              <select class="custom-select" [(ngModel)]="titleName" name="titleName" id="inputGroupSelect02">
                 <option>Select category</option>
                 <option *ngFor="let i of opptionIntro">{{ i }}</option>
               </select>
@@ -25,21 +26,21 @@
         </div>
       </div>
       <div class="col-lg-4 mt-4 animated fadeIn">
-      <div class="card text-white success-color">
-        <div class="card-body">
-          <div class="col-sm-12">
-            <h2 class="">Game</h2>
-          </div>
-          <p>Choose the Game For the Module </p>
-          <div class="input-group mb-3">
-              <select class="custom-select" [(ngModel)] = "gameTitle" name = "gameTitle" id="inputGroupSelect02">
-                  <option>Select category</option>
-                  <option *ngFor="let i of opptionIntro">{{ i }}</option>
-                </select>
+        <div class="card text-white success-color">
+          <div class="card-body">
+            <div class="col-sm-12">
+              <h2 class="">Game</h2>
+            </div>
+            <p>Choose the Game For the Module </p>
+            <div class="input-group mb-3">
+              <select class="custom-select" [(ngModel)]="gameTitle" name="gameTitle" id="inputGroupSelect02">
+                <option>Select category</option>
+                <option *ngFor="let i of opptionGame">{{ i }}</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
       <div class="col-lg-4 mt-4 animated fadeIn">
         <div class="card text-white danger-color">
           <div class="card-body">
@@ -48,7 +49,7 @@
             </div>
             <p>Choose the Quiz For the Module </p>
             <div class="input-group mb-3">
-              <select class="custom-select" [(ngModel)] = "cat" name = "cat" id="inputGroupSelect02">
+              <select class="custom-select" [(ngModel)]="cat" name="cat" id="inputGroupSelect02">
                 <option>Select category</option>
                 <option *ngFor="let i of opption">{{ i }}</option>
               </select>
@@ -57,11 +58,10 @@
         </div>
       </div>
       <div class="save-button mt-3" style="width:100%">
-        <!-- <a type="submit" class="btn secondary-color text-white float-right  waves-light" routerLink="/module" mdbWavesEffect>save </a> -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary waves-light" aria-label="Close" routerLink="/module" mdbWavesEffect>Close</button>
-            <button type="button" class="btn btn-primary relative waves-light" (click)="saveChanges();" routerLink="/module" mdbWavesEffect>Save changes</button>
-          </div>
+          <button type="button" class="btn btn-secondary waves-light" aria-label="Close" routerLink="/module" mdbWavesEffect>Close</button>
+          <button type="button" class="btn btn-primary relative waves-light" (click)="saveChanges();" routerLink="/module" mdbWavesEffect>Save changes</button>
+        </div>
       </div>
     </div>
   </div>

@@ -15,6 +15,7 @@ export class LinkingPageComponent implements OnInit {
   cat;
   moduleName;
   gameTitle;
+  opptionGame = [];
 
   constructor(private fetch: ServerService) {
     this.a.push(5);
@@ -32,6 +33,12 @@ export class LinkingPageComponent implements OnInit {
           this.opptionIntro.push(i.title);
         }
         }, (error) => console.log('Error'));
+
+        this.fetch.getAllGames().subscribe((data) => {
+          for (const i of data) {
+            this.opptionGame.push(i.name);
+          }
+          }, (error) => console.log('Error'));
 
         this.fetch.getCourses().subscribe((data) => {
           // this.courseid = this.fetch.selectCourse;

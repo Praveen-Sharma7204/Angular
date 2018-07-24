@@ -36,7 +36,8 @@ export class CreateQuizComponent implements OnInit {
   this.fetch.getQuiz().subscribe((data) => {
     for (const i of data) {
       this.opption.push(i);
-    }
+      console.log(i);
+      }
     }, (error) => console.log('Error'));
  }
 

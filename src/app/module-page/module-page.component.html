@@ -1,15 +1,15 @@
 <app-header></app-header>
 <div class="container whiteBackground animated fadeInLeft">
   <div class="container-fluid">
-  <div class="row mt-5 pt-5" >
-    <div class="heddderName module-header">
-      <div class="card-header col-lg-12 info-color">
-        <h2 class="text-white">{{ name }}</h2>
-        <!-- <h2 class = "text-info" >{{ name }}</h2> -->
-        <a class="btn info-color text-white waves-light " routerLink="/linking" mdbWavesEffect>Add Module</a>
+    <div class="row mt-5 pt-5">
+      <div class="heddderName module-header">
+        <div class="card-header col-lg-12 info-color">
+          <h2 class="text-white">{{ name }}</h2>
+          <!-- <h2 class = "text-info" >{{ name }}</h2> -->
+          <a class="btn info-color text-white waves-light " routerLink="/linking" mdbWavesEffect>Add Module</a>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
   <div class="modules container-fluid">
@@ -41,7 +41,7 @@
     <div class="row mt-5">
 
       <div class="col-sm-4 animated fadeIn" style="padding: 2%;" *ngFor="let i of option">
-        <a routerLink="/currentmodule">
+        <a routerLink="/currentmodule" (click)="saveModuleName(i)">
           <div class="card secondary-color">
             <h2 class="card-title p-4 text-white"> {{ i.moduleName }}</h2>
           </div>

@@ -62,22 +62,17 @@
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onClick(f)" #f="ngForm">
-          <input type="text" name="name" ngModel>
-          <!-- <input type="file" name="email" ngModel> -->
-          <input type="file" id="file" name="gameURL" ngmodel>
-          <input type="submit">
-        </form>
-        <!-- <div class="md-form">
-            <input type="text" name="name" placeholder="Game Name" ngModel>
+          <div class="md-form">
+            <input type="text" name="name" ngModel>
           </div>
           <div class="md-form">
-            <input type="file" name="gameURL" ngModel>
+            <input type="file" id="file" name="gameURL" ngmodel>
           </div>
-        </form> -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-        <button type="button" class="btn btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+            <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -99,9 +94,6 @@
           <div class="md-form">
             <div class="col-lg-12">
               <div class="form-group row">
-                <!-- Material input -->
-
-
                 <div class="col-sm-12">
                   <div class="md-form mt-1">
                     <input type="text" class="form-control" name="courseName" id="inputEmail3MD" placeholder="Course Name">

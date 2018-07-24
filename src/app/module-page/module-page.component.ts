@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from '../serverService';
-// import { CourseIntroComponent } from '../course-intro/course-intro.component';
 
 @Component({
   selector: 'app-module-page',
@@ -38,8 +37,6 @@ export class ModulePageComponent implements OnInit {
         }
       }
       }, (error) => console.log('Error'));
-  console.log(this.courseIntro);
-  console.log(this.fetch.selectCourse);
   }
 
   initializeCourseData(data) {
@@ -56,5 +53,9 @@ export class ModulePageComponent implements OnInit {
     this.fetch.changeIntroVar = changeCourseIntro;
     this.fetch.changeIntroFun(this.fetch.selectCourse, changeCourseIntro).subscribe((data) => {
     }, (error) => console.log('Error'));
+  }
+
+  saveModuleName(element)  {
+    this.fetch.selectedModule = element.moduleName;
   }
 }
