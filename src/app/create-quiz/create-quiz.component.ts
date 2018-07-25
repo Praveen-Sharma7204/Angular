@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ServerService} from '../serverService';
 import {SelectionModel} from '@angular/cdk/collections';
+import { NgForm } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-create-quiz',
@@ -21,24 +24,53 @@ export class CreateQuizComponent implements OnInit {
   questionId;
   mediaURL;
   mediaType;
-  constructor(private fetch: ServerService) {
+  formData;
+  file;
+  image;
+  a;
+  constructor(private http: HttpClient, private fetch: ServerService) {
    }
    hideCategory() {
      if (this.category === 'Create New') {
        this.hide = false;
      }
-    //  if(this.category != 'Create New' && this.category != 'Select category')
-    //  else{
-    //    name: this.selectedOption;
-    //  }
    }
+
+   clearText()  {
+    this.category = '';
+   }
+
   ngOnInit() {
   this.fetch.getQuiz().subscribe((data) => {
     for (const i of data) {
       this.opption.push(i);
-      console.log(i);
       }
     }, (error) => console.log('Error'));
  }
+
+ onClick(form: NgForm) {
+    this.a = form.value;
+    // console.log(this.a);
+    this.formData = new FormData();
+    this.formData.append('category', this.a.category);
+    this.formData.append('question', this.a.question);
+    this.formData.append('option1', this.a.option1);
+    this.formData.append('option2', this.a.option2);
+    this.formData.append('option3', this.a.option3);
+    this.formData.append('option4', this.a.option4);
+    this.formData.append('correctAns', this.a.correctAns);
+    this.a.mediaType = 'image';
+    this.formData.append('mediaType', this.a.mediaType);
+    this.file = document.getElementById('file12');
+    this.image = this.file.files;
+    this.formData.append('mediaURL', this.image[0]);
+    console.log(this.image[0]);
+    this.fetch.quizCreate(this.formData).subscribe((data) => {
+    }, (error) => console.log('Error'));
+    // this.http.post('http://192.168.0.18:8080/api/quiz', this.formData).subscribe(
+    //   (response: Response) => {
+    //     console.log(response);
+    //   });
+  }
 
 }

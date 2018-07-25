@@ -10,7 +10,6 @@
         <div class="card-header info-color">
           <h2 class="text-white">All Intro</h2>
         </div>
-
         <div class="container">
           <div class="col-lg-12">
             <div class="md-form float-right">
@@ -19,28 +18,18 @@
           </div>
         </div>
         <div class="example-container">
-
-
           <table mat-table #table [dataSource]="dataSource">
-
-
             <div class="tableInner">
               <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef> Title for Intro </th>
                 <td mat-cell *matCellDef="let element"> {{element.title}} </td>
               </ng-container>
-
-              <!-- <ng-container matColumnDef="image">
-                              <th mat-header-cell *matHeaderCellDef> Image </th>
-                              <td mat-cell *matCellDef="let element"> {{element.image}} </td>
-                          </ng-container> -->
               <ng-container matColumnDef="image">
                 <th mat-header-cell *matHeaderCellDef> Image </th>
                 <td mat-cell *matCellDef="let element">
                   <img class="img-fluid card-imgs" [src]="element.image">
                 </td>
               </ng-container>
-
               <ng-container matColumnDef="description">
                 <th mat-header-cell *matHeaderCellDef> Description </th>
                 <td mat-cell *matCellDef="let element"> {{element.description}} </td>
@@ -65,13 +54,11 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-
         </div>
         <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
         </mat-paginator>
       </div>
     </div>
-
     <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
       aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
       <div class="modal-dialog" role="document">
@@ -82,39 +69,34 @@
             </button>
             <h4 class="modal-title w-100" id="myModalLabel">Edit Intro</h4>
           </div>
-
-
-
-
-
-
-
           <div class="modal-body">
-            <form ngNoForm role="form" method="POST" [action]="'http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/'+introid" enctype="multipart/form-data">
+            <form ngNoForm role="form" method="POST" [action]="'http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/'+introid"
+              enctype="multipart/form-data">
               <div class="md-form">
                 <div class="col-lg-12">
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="Title for Intro" [(ngModel)]="title" name="title" required>
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="Title for Intro" [(ngModel)]="title" name="title"
+                          required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="description" [(ngModel)]="description" name="description" required>
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="description" [(ngModel)]="description" name="description"
+                          required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details"required>
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details" required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="file" name="image" id="inputEmail3MD"  required>
+                        <input type="file" name="image" id="inputEmail3MD" required>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -122,28 +104,11 @@
               <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
             </form>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           <div class="modal-footer">
-
           </div>
         </div>
       </div>
     </div>
-
     <div mdbModal #basicModalDEL="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalDELLabel"
       aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
       <div class="modal-dialog" role="document">
@@ -154,24 +119,11 @@
             </button>
             <h5 class="modal-title w-100" id="myModalLabel">Delete Quiz Question</h5>
           </div>
-
-
-
-
-
-
-
-
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
-            <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL();basicModalDEL.hide()" mdbWavesEffect>Confirm</button>
-          </div>
+          <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
+          <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL();basicModalDEL.hide()" mdbWavesEffect>Confirm</button>
         </div>
       </div>
     </div>
-
-
   </div>
-
+</div>
 </div>

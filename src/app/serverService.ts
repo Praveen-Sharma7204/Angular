@@ -20,6 +20,7 @@ export class ServerService {
   editedIntro = {};
   editedQuizDEL = {};
   editedGame = {};
+  createQuiz = {};
   quizData;
   quizFlag = 0;
   selectCourse;
@@ -122,7 +123,7 @@ export class ServerService {
     const headers = new Headers({
       'Content-Type': 'application/json'
     });
-    return this.http.get('http://192.168.0.18:8080/api/game')
+    return this.http.get('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/game')
       .map(
         (response: Response) => {
           const data = response.json();
@@ -134,6 +135,18 @@ export class ServerService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/users/' + id, this.editedUser, options).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
+  quizCreate(details)  {
+    console.log(details);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz', details, ).map(
       (response: Response) => {
         const data = response.json();
         return data;
