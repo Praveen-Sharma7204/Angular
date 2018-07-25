@@ -57,7 +57,6 @@ export class ModulePageComponent implements OnInit {
 
   click() {
     console.log('aksdkjhaskd');
-    
   }
 
   saveModuleName(element)  {
