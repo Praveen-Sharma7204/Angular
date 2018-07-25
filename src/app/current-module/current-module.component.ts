@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ModuleWithComponentFactories } from '@angular/core';
 import { ServerService } from '../serverService';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -23,7 +23,14 @@ export class CurrentModuleComponent implements OnInit {
   game;
   intro;
   formdata;
-  constructor(private http: HttpClient, private serverService: ServerService) {
+  moduleName;
+  formData;
+  fdata;
+  storeName;
+  storeGame;
+  storeIntro;
+  storeQuiz;
+  constructor(private serverService: ServerService) {
   }
 
   ngOnInit() {
@@ -55,22 +62,36 @@ export class CurrentModuleComponent implements OnInit {
         for (const i of course.modules) {
           if ( i.moduleName === this.serverService.selectedModule)  {
             this.data = i;
+            this.storeName = i.moduleName;
+            this.storeGame = i.name;
+            this.storeIntro = i.introTitle;
+            this.storeQuiz = i.quizCategory;
           }
         }
       }
     }
   }
 
-  formIntro(form: NgForm) {
-    this.intro = form.value;
-    this.formdata = new FormData();
-    this.formdata.append('introTitle', this.intro.introTitle);
-    this.http.post('http://192.168.0.18:8080/api/game', this.formdata).subscribe(
-        (response: Response) => {
-          console.log(response);
-        });
+  changeName(a, value) {
+    // if (value === 'module')  {
+      this.serverService.changeModule(this.serverService.selectCourse, this.storeName, a).subscribe((data) => {
+      }, (error) => console.log('Error'));
+  //  }
+  //  if (value === 'intro')  {
+  //    this.serverService.changeModule(this.serverService.selectCourse, this.storeName, a, value).subscribe((data) => {
+  //    }, (error) => console.log('Error'));
+  //  }
+  //   if (value === 'game')  {
+  //       this.serverService.changeModule(this.serverService.selectCourse, this.storeName, a, value).subscribe((data) => {
+  //       }, (error) => console.log('Error'));
+  //  }
+  //   if (value === 'quiz')  {
+  //     this.serverService.changeModule(this.serverService.selectCourse, this.storeName, a, value).subscribe((data) => {
+  //     }, (error) => console.log('Error'));
+  //  }
   }
 
+  // for hiding and unhiding EDIT-bar
   edit() {
     if (this.name === true) {
       this.name = false;

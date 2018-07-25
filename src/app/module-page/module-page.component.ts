@@ -55,6 +55,11 @@ export class ModulePageComponent implements OnInit {
     }, (error) => console.log('Error'));
   }
 
+  click() {
+    console.log('aksdkjhaskd');
+    
+  }
+
   saveModuleName(element)  {
     this.fetch.selectedModule = element.moduleName;
   }

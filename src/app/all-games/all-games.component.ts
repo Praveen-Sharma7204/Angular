@@ -16,7 +16,7 @@ export class AllGamesComponent implements OnInit {
   formData;
   gameid;
   delid;
-
+  data1;
   displayedColumns = ['name', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
@@ -45,8 +45,9 @@ export class AllGamesComponent implements OnInit {
   }
 
   onClick(form: NgForm) {
+    this.data1 = document.getElementById('file');
     this.data = this.data.files;
-    this.formData.append('imageURL', this.data[0]);
+    this.formData.append('gameURL', this.data[0]);
     this.serverService.editedGame = this.formData;
     this.serverService.editGame(this.gameid).subscribe((data) => {
     }, (error) => console.log('Error'));

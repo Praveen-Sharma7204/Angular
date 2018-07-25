@@ -90,7 +90,7 @@
                     </table>
 
                 </div>
-                <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+                <mat-paginator #paginator [pageSize]="3" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
                 </mat-paginator>
             </div>
         </div>
@@ -184,15 +184,6 @@
             </button>
             <h5 class="modal-title w-100" id="myModalLabel">Delete Quiz Question</h5>
           </div>
-
-
-          
-
-
-
-
-
-
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
             <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL();basicModalDEL.hide()" mdbWavesEffect>Confirm</button>

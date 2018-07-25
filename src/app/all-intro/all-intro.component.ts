@@ -4,6 +4,8 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {ServerService} from '../serverService';
 import { Router } from '@angular/router';
 import {PageEvent} from '@angular/material';
+import { NgForm } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -19,10 +21,17 @@ export class AllIntroComponent implements OnInit {
   image;
   introid;
   delid;
-  user: Element;
+  user;
   displayedColumns = [ 'title', 'image', 'description', 'details', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
+  data;
+  formdata;
+  formImage;
+  dataFile;
+  formData = [];
+  selectedFile;
+
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
 
    }
@@ -43,18 +52,16 @@ export class AllIntroComponent implements OnInit {
       title: this.title,
       description: this.description,
       details: this.details,
-      image: this.image,
+      image: this.selectedFile,
       _id: this.introid,
     };
     this.serverService.editedIntro = introEdited;
     this.serverService.editIntro(this.introid).subscribe((data) => {
     }, (error) => console.log('Error'));
-    // this.router.navigate(['users']);
-    // window.location.reload();
   }
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
   callme(data) {
@@ -77,4 +84,10 @@ export class AllIntroComponent implements OnInit {
     this.serverService.delIntro(this.delid).subscribe((data) => {
     }, (error) => console.log('Error'));
   }
+
+  changeFile(event)  {
+    this.selectedFile = null;
+    this.selectedFile = event.target.files[0];
+  }
+
 }

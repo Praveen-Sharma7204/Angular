@@ -55,7 +55,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </div>
-        <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+        <mat-paginator #paginator [pageSize]="3" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
         </mat-paginator>
       </div>
     </div>
@@ -70,31 +70,33 @@
             <h4 class="modal-title w-100" id="myModalLabel">Edit Intro</h4>
           </div>
           <div class="modal-body">
-            <form ngNoForm role="form" method="POST" [action]="'http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/'+introid"
-              enctype="multipart/form-data">
+              <form ngNoForm role="form" method="POST" [action]="'http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/'+introid"
+                enctype="multipart/form-data">
+             <!-- <form> -->
               <div class="md-form">
                 <div class="col-lg-12">
                   <div class="form-group row">
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
                         <input type="text" class="form-control" id="inputEmail3MD" placeholder="Title for Intro" [(ngModel)]="title" name="title"
-                          required>
+                        required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
                         <input type="text" class="form-control" id="inputEmail3MD" placeholder="description" [(ngModel)]="description" name="description"
-                          required>
+                         required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details" required>
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details"
+                        required>
                       </div>
                     </div>
                     <div class="col-sm-12">
                       <div class="md-form mt-1">
-                        <input type="file" name="image" id="inputEmail3MD" required>
+                        <input type="file" id="file" name="image" id="inputEmail3MD" required>
                       </div>
                     </div>
                   </div>
@@ -109,21 +111,74 @@
         </div>
       </div>
     </div>
+    
+    <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="height: 500px;">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Edit User</h4>
+        </div>
+        <div class="modal-body" style="overflow-y: scroll">
+          <form>
+            <div class="md-form">
+              <div class="col-lg-12">
+                <div class="form-group row">
+
+                  <div class="col-sm-12">
+                    <div class="md-form mt-1">
+                      <input type="text" class="form-control" id="inputEmail3MD" placeholder="Title of Intro" [(ngModel)]="title" name="title">
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="description" [(ngModel)]="description" name="description">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="md-form mt-1">
+                          <input type="text" class="form-control" id="inputEmail3MD" placeholder="details" [(ngModel)]="details" name="details">
+                        </div>
+                      </div>
+                    <div class="md-form mt-1">
+                      <input type="file" (change) = "changeFile($event)" class="form-control" id="inputEmail3MD" placeholder="Image for Intro" name="image">
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+          <button type="button" class="btn btn-primary relative waves-light" (click)="saveChanges();basicModal.hide()" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
     <div mdbModal #basicModalDEL="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalDELLabel"
-      aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModalDEL.hide()">
-              <span aria-hidden="true">×</span>
-            </button>
-            <h5 class="modal-title w-100" id="myModalLabel">Delete Quiz Question</h5>
-          </div>
-          <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
-          <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL();basicModalDEL.hide()" mdbWavesEffect>Confirm</button>
+    aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModalDEL.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h5 class="modal-title w-100" id="myModalLabel">Delete Quiz Question</h5>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
+        <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL();basicModalDEL.hide()" mdbWavesEffect>Confirm</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 </div>
+
+
+<!-- <form (ngSubmit)="onClick(f)" #f="ngForm"> -->

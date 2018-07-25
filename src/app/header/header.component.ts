@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
       this.formdata = new FormData();
       this.formdata.append('name', this.fData.name);
       this.formdata.append('gameURL', this.data1[0]);
-      this.http.post('http://192.168.0.18:8080/api/game', this.formdata).subscribe(
+      this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/game', this.formdata).subscribe(
         (response: Response) => {
           console.log(response);
         });

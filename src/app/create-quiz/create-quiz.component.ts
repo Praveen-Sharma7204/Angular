@@ -67,10 +67,6 @@ export class CreateQuizComponent implements OnInit {
     console.log(this.image[0]);
     this.fetch.quizCreate(this.formData).subscribe((data) => {
     }, (error) => console.log('Error'));
-    // this.http.post('http://192.168.0.18:8080/api/quiz', this.formData).subscribe(
-    //   (response: Response) => {
-    //     console.log(response);
-    //   });
   }
 
 }

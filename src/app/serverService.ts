@@ -28,6 +28,7 @@ export class ServerService {
   changeIntroVar;
   changeCourseIntro;
   selectedModule;
+  allIntroDetails;
 
   constructor(private http: Http) {
   }
@@ -131,6 +132,8 @@ export class ServerService {
         }
       );
   }
+
+
   editUser(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
@@ -142,11 +145,23 @@ export class ServerService {
     );
   }
 
-  quizCreate(details)  {
-    console.log(details);
+  quizCreate(details) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz', details, ).map(
+    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/quiz', details).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
+  allIntro(id , introData) {
+    // console.log(introData);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // tslint:disable-next-line:max-line-length
+    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/' + id, this.allIntroDetails, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -175,7 +190,6 @@ export class ServerService {
       }
     );
   }
-  // http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com
 
   delIntro(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -189,13 +203,16 @@ export class ServerService {
   }
 
   editIntro(id) {
+    console.log(id);
+    console.log(this.editedIntro);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/' + id, this.editedIntro, options).map(
+    // tslint:disable-next-line:max-line-length
+    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/' + id, this.editedIntro, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
-     }    );
+      });
   }
 
   editCourseModule(id) {
@@ -213,7 +230,7 @@ export class ServerService {
   changeIntroFun(id, introObject) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://192.168.0.18:8080/api/course/' + id, introObject, options).map(
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course/' + id, introObject, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -224,7 +241,7 @@ export class ServerService {
   editGame(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.put('http://192.168.0.18:8080/api/games/' + id, this.editedGame, options).map(
+    return this.http.put('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/games/' + id, this.editedGame, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -235,13 +252,26 @@ export class ServerService {
   gameDEL(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    return this.http.delete('http://192.168.0.18:8080/api/games/' + id).map(
+    return this.http.delete('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/games/' + id).map(
       (response: Response) => {
         const data = response.json();
         return data;
       }
     );
   }
+
+  changeModule(courseId, previousName, newName)  {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post('http://192.198.0.18:8080/api/course/module/' + courseId + '/' + previousName, newName).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
+
 
   postLoginData(formdata) {
     console.log(formdata);
