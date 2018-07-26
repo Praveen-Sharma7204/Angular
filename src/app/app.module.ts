@@ -88,4 +88,5 @@ export const router: Routes = [
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
 })
+
 export class AppModule {}

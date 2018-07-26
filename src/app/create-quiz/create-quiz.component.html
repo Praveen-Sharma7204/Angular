@@ -38,7 +38,8 @@
                       <input name="question" ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Question" required>
                     </div>
                     <div class="md-form mt-0">
-                      <input name="mediaURL" ngModel type="file" id = "file12" class="" placeholder="">
+                      <!-- <img name = "noImage" [(ngModel)] = "noImage" hidden ngModel type="file" id = "assets" src="../../assets/Noimage.png"> -->
+                      <input name="mediaURL" ngModel type="file" id = "file12" class="" (change) = "checkFile();" placeholder="">
                     </div>
                   </div>
                 </div>
@@ -110,3 +111,5 @@
     </div>
   </div>
 </main>
+
+

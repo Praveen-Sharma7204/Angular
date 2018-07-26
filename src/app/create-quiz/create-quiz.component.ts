@@ -22,12 +22,14 @@ export class CreateQuizComponent implements OnInit {
   option4;
   category;
   questionId;
+  noImage;
   mediaURL;
   mediaType;
   formData;
   file;
   image;
   a;
+  click = false;
   constructor(private http: HttpClient, private fetch: ServerService) {
    }
    hideCategory() {
@@ -59,14 +61,24 @@ export class CreateQuizComponent implements OnInit {
     this.formData.append('option3', this.a.option3);
     this.formData.append('option4', this.a.option4);
     this.formData.append('correctAns', this.a.correctAns);
-    this.a.mediaType = 'image';
-    this.formData.append('mediaType', this.a.mediaType);
     this.file = document.getElementById('file12');
     this.image = this.file.files;
+    // if (this.click === true)  {
+    this.formData.append('mediaType', this.a.mediaType);
     this.formData.append('mediaURL', this.image[0]);
-    console.log(this.image[0]);
+    // }
+    if (this.click === false)  {
+      this.formData.append('mediaType', 'null');
+      this.formData.append('mediaURL', 'null');
+    }
+    // console.log(this.image[0]);
     this.fetch.quizCreate(this.formData).subscribe((data) => {
     }, (error) => console.log('Error'));
   }
 
+  checkFile () {
+    this.click = true;
+  }
 }
+
+
