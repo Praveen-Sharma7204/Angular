@@ -31,6 +31,7 @@ export class AllIntroComponent implements OnInit {
   dataFile;
   formData = [];
   selectedFile;
+  mediaURL;
 
   constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
 

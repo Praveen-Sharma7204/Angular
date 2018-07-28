@@ -33,8 +33,15 @@ import {
 } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-// import { CourseIntroComponent } from './course-intro/course-intro.component';
-
+// #################
+import { PanelheaderComponent } from './panel/panelheader/panelheader.component';
+import { PanelcourseComponent } from './panel/panelcourse/panelcourse.component';
+import { PanelscoreComponent } from './panel/panelscore/panelscore.component';
+import { PanelenrolleComponent } from './panel/panelenrolle/panelenrolle.component';
+import { PanelgameComponent } from './panel/panelgame/panelgame.component';
+import { PanelquizComponent } from './panel/panelquiz/panelquiz.component';
+import { PanelintroComponent } from './panel/panelintro/panelintro.component';
+import { PaneluserComponent } from './panel/paneluser/paneluser.component';
 
 export const router: Routes = [
   { path: 'home', component: HomeComponent},
@@ -51,8 +58,16 @@ export const router: Routes = [
   { path: 'scores', component: ScoresComponent},
   { path: 'allgames', component: AllGamesComponent},
   { path: 'allintro', component: AllIntroComponent},
-  { path: 'allquiz', component: AllQuizComponent}
-
+  { path: 'allquiz', component: AllQuizComponent},
+  // ################
+  {path: 'panelheader', component: PanelheaderComponent},
+  {path: 'panelcourse', component: PanelcourseComponent },
+  {path: 'panelscore', component: PanelscoreComponent },
+  {path: 'panelenrolle', component: PanelenrolleComponent },
+  {path: 'panelgame', component: PanelgameComponent },
+  {path: 'panelintro', component: PanelintroComponent },
+  {path: 'panelquiz', component: PanelquizComponent},
+  {path: 'paneluser', component: PaneluserComponent },
 ];
 
 @NgModule({
@@ -71,7 +86,15 @@ export const router: Routes = [
     AllQuizComponent,
     LoginComponent,
     HeaderComponent,
-    // CourseIntroComponent,
+    // ###########
+    PanelheaderComponent,
+    PanelcourseComponent,
+    PanelscoreComponent,
+    PanelenrolleComponent,
+    PanelgameComponent,
+    PanelquizComponent,
+    PanelintroComponent,
+    PaneluserComponent,
   ],
   imports: [
     BrowserModule,
