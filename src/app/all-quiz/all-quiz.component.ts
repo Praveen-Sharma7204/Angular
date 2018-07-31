@@ -4,6 +4,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { ServerService } from '../serverService';
 import { Router } from '@angular/router';
 import { PageEvent } from '@angular/material';
+import { NotifierService } from 'angular-notifier';
 
 
 @Component({
@@ -32,9 +33,15 @@ export class AllQuizComponent implements OnInit {
   displayedColumns = ['category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
-  constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
+  constructor(private serverService: ServerService, private readonly notifier: NotifierService,
+       private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
+        this.notifier.show( {
+          type: 'success',
+          message: 'You are awesome! I mean it!',
+          id: 'THAT_NOTIFICATION_ID' // Again, this is optional
+        } );
+        }
 
-  }
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {

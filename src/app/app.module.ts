@@ -11,8 +11,8 @@ import { LinkingPageComponent } from './linking-page/linking-page.component';
 import { CurrentModuleComponent } from './current-module/current-module.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './users/users.component';
-import {MatTableModule} from '@angular/material';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule} from '@angular/material';
+import { MatPaginatorModule} from '@angular/material/paginator';
 import { EnrolledusersComponent } from './enrolledusers/enrolledusers.component';
 import { FormsModule } from '@angular/forms';
 import { ScoresComponent } from './scores/scores.component';
@@ -34,14 +34,6 @@ import {
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 // #################
-import { PanelheaderComponent } from './panel/panelheader/panelheader.component';
-import { PanelcourseComponent } from './panel/panelcourse/panelcourse.component';
-import { PanelscoreComponent } from './panel/panelscore/panelscore.component';
-import { PanelenrolleComponent } from './panel/panelenrolle/panelenrolle.component';
-import { PanelgameComponent } from './panel/panelgame/panelgame.component';
-import { PanelquizComponent } from './panel/panelquiz/panelquiz.component';
-import { PanelintroComponent } from './panel/panelintro/panelintro.component';
-import { PaneluserComponent } from './panel/paneluser/paneluser.component';
 
 export const router: Routes = [
   { path: 'home', component: HomeComponent},
@@ -60,14 +52,6 @@ export const router: Routes = [
   { path: 'allintro', component: AllIntroComponent},
   { path: 'allquiz', component: AllQuizComponent},
   // ################
-  {path: 'panelheader', component: PanelheaderComponent},
-  {path: 'panelcourse', component: PanelcourseComponent },
-  {path: 'panelscore', component: PanelscoreComponent },
-  {path: 'panelenrolle', component: PanelenrolleComponent },
-  {path: 'panelgame', component: PanelgameComponent },
-  {path: 'panelintro', component: PanelintroComponent },
-  {path: 'panelquiz', component: PanelquizComponent},
-  {path: 'paneluser', component: PaneluserComponent },
 ];
 
 @NgModule({
@@ -87,14 +71,6 @@ export const router: Routes = [
     LoginComponent,
     HeaderComponent,
     // ###########
-    PanelheaderComponent,
-    PanelcourseComponent,
-    PanelscoreComponent,
-    PanelenrolleComponent,
-    PanelgameComponent,
-    PanelquizComponent,
-    PanelintroComponent,
-    PaneluserComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +81,7 @@ export const router: Routes = [
     MatPaginatorModule,
     FormsModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
   ],
   providers: [ServerService],
   bootstrap: [AppComponent],

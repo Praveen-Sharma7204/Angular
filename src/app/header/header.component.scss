@@ -10,3 +10,12 @@ body{
 footer{
     min-height: 80px;
 }
+
+@media only screen and (min-width: 990px)   {
+    .show > .dropdown-menu {
+        display: block;
+        /* margin-right: 55px; */
+        right: 12px!important;
+        left: unset!important;
+    }
+}

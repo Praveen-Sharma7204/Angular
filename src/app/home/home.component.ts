@@ -18,18 +18,17 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.serverService.getCourses().subscribe((data) => this.initializeCourseData(data), (error) => console.log('Error'));
+    this.serverService.getCourses().subscribe((data) => {
+      this.initializeCourseData(data); } , (error) => console.log('Error'));
   }
   initializeCourseData(data) {
     for (const course of data) {
-      // console.log(this.selectedCourse);
       this.data.push(course);
     }
   }
   selectCourse(id)  {
     this.router.navigate(['/module']);
     this.serverService.selectCourse = id;
-
   }
 
 }

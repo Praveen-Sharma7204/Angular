@@ -62,4 +62,8 @@ export class ModulePageComponent implements OnInit {
   saveModuleName(element)  {
     this.fetch.selectedModule = element.moduleName;
   }
+  saveChangesDEL() {
+    this.fetch.delCourse(this.fetch.selectCourse).subscribe((data) => {
+    }, (error) => console.log('Error'));
+  }
 }

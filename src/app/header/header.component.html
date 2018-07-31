@@ -36,7 +36,7 @@
       <a dropdownToggle type="button" class=" waves-light" mdbWavesEffect>
         <i class="fa fa-plus"></i>
       </a>
-      <div class="dropdown-menu dropdown-primary dropdown-menu-right">
+      <div class="dropdown-menu dropdown-primary dropdown-menu-left dropLeft">
         <a class="dropdown-item" (click)="basicModal.show()">Upload Games</a>
         <a class="dropdown-item" routerLink="/createquiz">Create Quiz</a>
         <a class="dropdown-item" (click)="basicModal2.show()">Add Intro</a>
@@ -126,7 +126,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal1.hide()" mdbWavesEffect>Close</button>
-          <button type="submit" class="btn btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+          <button type="submit" class="btn btn-primary relative waves-light" routerLink="/home" mdbWavesEffect>Save changes</button>
         </div>
       </form>
     </div>

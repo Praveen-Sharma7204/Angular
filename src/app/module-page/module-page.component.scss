@@ -3,7 +3,23 @@
     top: 5px;
     right: 0;
 }
-
+.titleName  {
+    position: absolute;
+    bottom: 12px;
+}
+.deletebutton  {
+    right: 160px !important;
+}
+.card1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    background-color: none!important;
+    border-radius: 0.25rem;
+}
 .introDisplay {
     font-size: 26px;
     margin-top: 5px;
@@ -12,7 +28,6 @@
 
 .introName  {
     text-align: center;
-    color: snow;
 }
 
 .whiteBackground    {

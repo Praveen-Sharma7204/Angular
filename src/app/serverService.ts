@@ -207,8 +207,8 @@ export class ServerService {
     console.log(this.editedIntro);
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    // tslint:disable-next-line:max-line-length
-    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/' + id, this.editedIntro, options).map(
+    return this.http.post('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/intro/edit/' + id,
+      this.editedIntro, options).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -271,7 +271,16 @@ export class ServerService {
     );
   }
 
-
+  delCourse(id) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course/' + id).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
 
   postLoginData(formdata) {
     console.log(formdata);
