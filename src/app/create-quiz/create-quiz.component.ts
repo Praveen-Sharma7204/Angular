@@ -77,5 +77,3 @@ export class CreateQuizComponent implements OnInit {
     this.click = true;
   }
 }
-
-

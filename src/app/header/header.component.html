@@ -63,10 +63,11 @@
       <div class="modal-body">
         <form (ngSubmit)="onClick(f)" #f="ngForm">
           <div class="md-form">
-            <input type="text" name="name" ngModel>
+            <input type="text" name="name" placeholder="Game Name" ngModel>
           </div>
           <div class="md-form">
             <input type="file" id="file" name="gameURL" ngmodel>
+            <p>*zip files only.</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>

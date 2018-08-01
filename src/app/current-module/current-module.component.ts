@@ -71,6 +71,11 @@ export class CurrentModuleComponent implements OnInit {
       }
     }
   }
+  saveChangesDEL() {
+    this.serverService.delModule(this.serverService.selectCourse)
+    .subscribe((data) => {
+    }, (error) => console.log('Error'));
+  }
 
   changeName(a, value) {
     // if (value === 'module')  {

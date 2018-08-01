@@ -1,60 +1,61 @@
 <app-header></app-header>
-<div class="container whiteBackground animated fadeInLeft">
+  <div class="container whiteBackground animated fadeInLeft">
   <div class="container-fluid">
-    <div class="row mt-5 pt-5">
-      <div class="heddderName module-header">
-        <div class=" col-lg-12 text-muted " style = "height: 70px">
-          <h2 class="titleName">{{ name }}</h2>
-          <a style="display: inline;" class="btn deletebutton danger-color text-white waves-light" (click)="basicModalDEL.show();" mdbWavesEffect>Delete Course</a>
-          <div class="">
-          <a class="btn info-color text-white waves-light " routerLink="/linking" mdbWavesEffect>Add Module</a>
+      <div class="row mt-5 pt-5">
+        <div class="heddderName module-header">
+          <div class=" col-lg-12 text-muted " style="height: 70px">
+            <h2 class="titleName">{{ name }}</h2>
+            <a style="display: inline;" class="btn deletebutton danger-color text-white waves-light" (click)="basicModalDEL.show();"
+              mdbWavesEffect>Delete Course</a>
+            <div class="">
+              <a class="btn info-color text-white waves-light " routerLink="/linking" mdbWavesEffect>Add Module</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="modules container-fluid">
+      <div class="row mt-5  justify-content-center">
+        <div class="info-color col-sm-12 card animated fadeIn" style="padding: 2%">
+          <div class="row justify-content-center">
+            <div class="col-lg-4">
+              <h2 class="card-title text-white introName">Present Intro:</h2>
+            </div>
+          </div>
+          <h2 class="card-title introName">
+            <h4 class=" introDisplay text-white">{{ courseIntro }}</h4>
+          </h2>
+          <div class="row justify-content-center">
+            <div class="col-lg-4">
+
+              <form>
+                <select class="custom-select" [(ngModel)]="courseIntro" name="courseIntro" id="inputGroupSelect02">
+                  <option>Change Intro</option>
+                  <option *ngFor="let i of optionIntro">{{ i }}</option>
+                </select>
+                <button type="submit" style="width: 100%; margin-left: 0px;" class="btn btn-primary relative waves-light" (click)="saveChanges()"
+                  mdbWavesEffect>Save changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+
+        <div class="col-sm-4 animated fadeIn" style="padding: 2%;" *ngFor="let i of option">
+          <a routerLink="/currentmodule" (click)="saveModuleName(i)">
+            <div class="card secondary-color">
+              <h2 class="card-title p-4 text-white"> {{ i.moduleName }}</h2>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div style="height: 10px"></div>
   </div>
 
-  <div class="modules container-fluid">
-    <div class="row mt-5  justify-content-center">
-      <div class="info-color col-sm-12 card animated fadeIn" style="padding: 2%">
-        <div class="row justify-content-center">
-          <div class="col-lg-4">
-            <h2 class="card-title text-white introName">Present Intro:</h2>
-          </div>
-        </div>
-        <h2 class="card-title introName">
-          <h4 class=" introDisplay text-white">{{ courseIntro }}</h4>
-        </h2>
-        <div class="row justify-content-center">
-          <div class="col-lg-4">
-
-            <form>
-              <select class="custom-select" [(ngModel)]="courseIntro" name="courseIntro" id="inputGroupSelect02">
-                <option>Change Intro</option>
-                <option *ngFor="let i of optionIntro">{{ i }}</option>
-              </select>
-              <button type="submit" style="width: 100%; margin-left: 0px;" class="btn btn-primary relative waves-light" (click)="saveChanges()"
-                mdbWavesEffect>Save changes</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-5">
-
-      <div class="col-sm-4 animated fadeIn" style="padding: 2%;" *ngFor="let i of option">
-        <a routerLink="/currentmodule" (click)="saveModuleName(i)">
-          <div class="card secondary-color">
-            <h2 class="card-title p-4 text-white"> {{ i.moduleName }}</h2>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div style="height: 10px"></div>
-</div>
-
-    <div mdbModal #basicModalDEL="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalDELLabel"
+  <div mdbModal #basicModalDEL="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalDELLabel"
     aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -62,16 +63,15 @@
           <button type="button" class="close pull-right" aria-label="Close" (click)="basicModalDEL.hide()">
             <span aria-hidden="true">×</span>
           </button>
-          <h5 class="modal-title w-100" id="myModalLabel">Delete Course?</h5>
+          <h5 class="modal-title w-100" id="myModalLabel">Delete {{name}}?</h5>
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
-        <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL()" routerLink="/home" mdbWavesEffect>Confirm</button>
+          <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
+          <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL()" routerLink="/home" mdbWavesEffect>Confirm</button>
         </div>
       </div>
     </div>
   </div>
-
 <!-- <app-header></app-header>
 <div class="container whiteBackground animated fadeInLeft">
   <div class="container-fluid">

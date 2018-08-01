@@ -281,7 +281,17 @@ export class ServerService {
       }
     );
   }
-
+  delModule(courseId) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete('http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course/' + courseId, this.selectedModule)
+    .map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
   postLoginData(formdata) {
     console.log(formdata);
     return this.http.post('xxxxxxxxxxxxxxxxxx/' + '/api/client/login', formdata);

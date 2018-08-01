@@ -33,13 +33,7 @@ export class AllQuizComponent implements OnInit {
   displayedColumns = ['category', 'questions', 'image', 'option1', 'option2', 'option3', 'option4', 'correctAns', 'edit', 'delete'];
   dataSource = new MatTableDataSource();
   selection = new SelectionModel<Element>(true, []);
-  constructor(private serverService: ServerService, private readonly notifier: NotifierService,
-       private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
-        this.notifier.show( {
-          type: 'success',
-          message: 'You are awesome! I mean it!',
-          id: 'THAT_NOTIFICATION_ID' // Again, this is optional
-        } );
+  constructor(private serverService: ServerService, private router: Router, private changeDetectorRefs: ChangeDetectorRef) {
         }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
