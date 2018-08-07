@@ -1,0 +1,286 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row mt-5 pt-5">
+    <div class="col-lg-12 module-header">
+    </div>
+  </div>
+  <div class="row  p-2 md-2">
+    <div class="col-lg-12">
+      <div class="card animated fadeInLeft">
+        <div class="card-header info-color">
+          <h2 class="text-white">All Quiz</h2>
+        </div>
+
+        <div class="container">
+          <div class="col-lg-12">
+            <div class="md-form float-right">
+              <input type="text" id="form1" class="form-control" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </div>
+          </div>
+        </div>
+        <div class="example-container">
+
+
+          <table mat-table #table [dataSource]="dataSource">
+
+            <div class="tableInner">
+
+              <ng-container matColumnDef="category">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Category </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.category}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="questions">
+                <th class="pl-3 pt-2" mat-header-cell *matHeaderCellDef> Questions </th>
+                <td class="pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.question.qstn}} </td>
+              </ng-container>
+
+              <div ng-if="element.question.mediaURL!=''">
+                <ng-container matColumnDef="image">
+                  <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Image </th>
+                  <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element">
+                    <img class="img-fluid card-imgs" [src]="element.question.mediaURL">
+                  </td>
+                </ng-container>
+              </div>
+
+              <ng-container matColumnDef="option1">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Option-1 </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.options[0]}} </td>
+              </ng-container>
+              <ng-container matColumnDef="option2">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Option-2 </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.options[1]}} </td>
+              </ng-container>
+              <ng-container matColumnDef="option3">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Option-3 </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.options[2]}} </td>
+              </ng-container>
+              <ng-container matColumnDef="option4">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Option-4 </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.options[3]}} </td>
+              </ng-container>
+              <ng-container matColumnDef="correctAns">
+                <th mat-header-cell class="text-center pl-3 pt-2" *matHeaderCellDef> Correct_Option </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element"> {{element.correctAns}} </td>
+              </ng-container>
+              <ng-container matColumnDef="edit">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Edit </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element" (click)="basicModal.show();edit(element);callme(element);">
+                  <span class="fa fa-pencil"></span>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="delete">
+                <th class="text-center pl-3 pt-2" mat-header-cell *matHeaderCellDef> Delete </th>
+                <td class="text-center pl-3 pt-2" mat-cell *matCellDef="let element" (click)="basicModalDEL.show();callmeDEL(element);">
+                  <span class="fa fa-trash"></span>
+                </td>
+              </ng-container>
+            </div>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+        </div>
+        <mat-paginator #paginator [pageSize]="3" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true">
+        </mat-paginator>
+      </div>
+    </div>
+
+    <!-- <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+      aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title w-100" id="myModalLabel">Update Quiz</h4>
+          </div>
+          <div class="modal-body">
+            <form >
+              <div class="md-form">
+                <div class="col-lg-12">
+                  <div class="form-group row">
+
+                    <div class="col-sm-12 ">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="Question" [(ngModel)]="question" name="question">
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 ">
+                        <div class="md-form mt-1">
+                          <input type="file" class="form-control" id="inputEmail3MD" [(ngModel)]="mediaURL" name="mediaURL">
+                        </div>
+                      </div>
+
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <select class="custom-select" id="quizCategory" (keyup)="applyFilter($event.target.value)" [(ngModel)]="cat" name="cat">
+                          <option *ngFor="let i of category">{{ i }}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="option1" [(ngModel)]="option1" name="option1">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="option2" [(ngModel)]="option2" name="option2">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="option3" [(ngModel)]="option3" name="OptioN3">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="option4" [(ngModel)]="option4" name="option4">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" id="inputEmail3MD" placeholder="Correct_Option" [(ngModel)]="correctAns" name="correctAns">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+            <button type="button" class="btn btn-primary relative waves-light" (click)="saveChanges();basicModal.hide()" mdbWavesEffect>Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+    <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+      aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+      <div class="modal-dialog" role="document">
+        <!-- <form (ngSubmit)="onClick(f)" #f="ngForm"> -->
+        <form ngNoForm role="form" method="POST" [action]="serverService.rootURL + 'api/quiz/' + quizid" enctype="multipart/form-data">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title w-100" id="myModalLabel">Update Quiz</h4>
+            </div>
+            <div class="modal-body">
+              <div class="md-form">
+                <!-- <div class="col-lg-12"> -->
+                  <div class="form-group row">
+
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <select ngModel (change)="imageSelect()" class="custom-select" id="quizCategory" (keyup)="applyFilter($event.target.value)"
+                          [(ngModel)]="cat" name="category">
+                          <option>Change Category?</option>
+                          <option *ngFor="let i of category">{{ i }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 ">
+                      <div class="md-form mt-1">
+                        <input ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Question" [(ngModel)]="question" name="question">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 ">
+                      <div class="md-form mt-1">
+                        <input ngModel id="file" type="file" class="form-control" id="inputEmail3MD" [(ngModel)]="mediaURL" name="mediaURL">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 ">
+                      <div class="md-form mt-1">
+                        <input ngModel id="file" type="hidden" class="form-control" id="inputEmail3MD" [(ngModel)]="oldMediaURL" name="oldMediaURL">
+                      </div>
+                    </div>
+                    <div class="col-sm-12 ">
+                      <div class="md-form mt-1">
+                        <input ngModel id="file" type="hidden" class="form-control" id="inputEmail3MD" [(ngModel)]="mediaType" name="mediaType">
+                      </div>
+                    </div>
+
+
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="option1" [(ngModel)]="option1" name="option1">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="option2" [(ngModel)]="option2" name="option2">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="option3" [(ngModel)]="option3" name="option3">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="option4" [(ngModel)]="option4" name="option4">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Correct_Option" [(ngModel)]="correctAns"
+                          name="correctAns">
+                      </div>
+                    </div>
+                  </div>
+                <!-- </div> -->
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+              <button type="submit" class="btn btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div mdbModal #basicModalDEL="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalDELLabel"
+      aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-right" aria-label="Close" (click)="basicModalDEL.hide()">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h5 class="modal-title w-100" id="myModalLabel">Delete Quiz Question</h5>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
+            <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL();basicModalDEL.hide()" mdbWavesEffect>Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

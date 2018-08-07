@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background: #f1efef
+}
+.whiteBG    {
+    background: white;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.notification-open  {
+    background: #5f5c5cd7;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    height: 25px;
+    margin-top: 16px;
+    color: #d7d9dc;
+    opacity: 1;
+    transform: translateY(2);
+    transition: 0.3s all ease-in-out;
+}
+
+.notification-close  {
+    background: #5f5c5cd7;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    height: 25px;
+    margin-top: 16px;
+    color: #d7d9dc;
+    opacity: 0;
+    transform: translateY(-100%);
+    visibility: hidden;
+    transition: 0.3s all ease-in;
+}
+td.mat-cell:last-child, td.mat-footer-cell:last-child, th.mat-header-cell:last-child {
+    padding-right: 1px !important;
+} 
+.example-container[_ngcontent-c1] {
+    margin-right: 25px !important;
+}  
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';

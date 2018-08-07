@@ -1,0 +1,141 @@
+<app-header></app-header>
+<div class="container whiteBackground animated fadeInLeft">
+  <div class="container-fluid">
+    <div class="row mt-5 pt-5">
+      <div class="col text-muted module-header">
+        <h3 style="display: inline;">Module Name </h3>
+        <a style="float: right;margin-top: -5px;" class="btn deletebutton danger-color text-white waves-light" (click)="basicModalDEL.show();"
+          mdbWavesEffect>Delete Module</a>
+        <form>
+          <input name="moduleName" [(ngModel)]="data.moduleName" type="text" class="moduleName" id="inputEmail3MD" placeholder="Enter Module Name"
+            ngModel required>
+        </form>
+        <a type="button" class="btn text-center info-color text-white waves-light" (click)="changeName(data.moduleName, 'module')" mdbWavesEffect>Save</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mt-3">
+    <div class="col-lg-4 animated fadeIn">
+      <div class="card">
+        <div class="card-header info-color">
+          <h3 class="text-white text-center">Intro</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngIf="name" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ data.introTitle }}
+              <span (click)="edit()" class="badge badge-primary badge-pill">
+                <i class="fa  fa-2x fa-edit"></i>
+              </span>
+            </li>
+            <li *ngIf="list" class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="input-group mb-3">
+                <form>
+                  <select [(ngModel)]="data.introTitle" name="introTitle" class="custom-select" id="inputGroupSelect02" ngModel>
+                    <option *ngFor="let i of optionIntro"> {{ i }} </option>
+                  </select>
+                </form>
+              </div>
+              <span (click)="redo()" style="margin-top: -15px;" class="badge danger-color ml-2">
+                <i class="fa fa-2x fa-times "></i>
+              </span>
+            </li>
+          </ul>
+          <div *ngIf="list" class="col-lg-12 text-center">
+            <a type="button" class="btn text-center info-color text-white waves-light" (click)="changeName(data.introTitle, 'intro')" mdbWavesEffect>Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 animated fadeIn">
+      <div class="card">
+        <div class="card-header success-color">
+          <h3 class="text-white text-center">Game</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngIf="name1" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ data.name }}
+              <span (click)="edit1()" class="badge badge-primary badge-pill">
+                <i class="fa  fa-2x fa-edit"></i>
+              </span>
+            </li>
+
+            <li *ngIf="list1" class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="input-group mb-3">
+                <form>
+                  <select [(ngModel)]="data.name" class="custom-select" id="inputGroupSelect02" ngModel>
+                    <option *ngFor="let i of optionGame"> {{ i }} </option>
+                  </select>
+                </form>
+              </div>
+              <span (click)="redo1()" style="margin-top: -15px;" class="badge danger-color ml-2">
+                <i class="fa  fa-2x fa-times "></i>
+              </span>
+            </li>
+          </ul>
+          <div *ngIf="list1" class="col-lg-12 text-center">
+            <a type="button" class="btn text-center info-color text-white waves-light" (click)="changeName(data.name, 'game')" mdbWavesEffect>
+              Save</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-4 animated fadeIn">
+      <div class="card">
+        <div class="card-header danger-color">
+          <h3 class="text-white text-center">Quiz</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngIf="name2" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ data.quizCategory }}
+              <span (click)="edit2()" class="badge badge-primary badge-pill">
+                <i class="fa  fa-2x fa-edit"></i>
+              </span>
+            </li>
+            <li *ngIf="list2" class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="input-group mb-3">
+                <form>
+                  <select [(ngModel)]="data.quizCategory" name="category" class="custom-select" id="inputGroupSelect02" ngModel>
+                    <option *ngFor="let i of optionQuiz"> {{ i }} </option>
+                  </select>
+                </form>
+              </div>
+              <span (click)="redo2()" style="margin-top: -15px;" class="badge danger-color ml-2">
+                <i class="fa  fa-2x fa-times "></i>
+              </span>
+            </li>
+          </ul>
+          <div *ngIf="list2" class="col-lg-12 text-center">
+            <a type="button" class="btn text-center info-color text-white waves-light" (click)="changeName(data.quizCategory, 'quiz')"
+              mdbWavesEffect>
+              Save</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 25px"></div>
+</div>
+
+<div mdbModal #basicModalDEL="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalDELLabel"
+  aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModalDEL.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h5 class="modal-title w-100" id="myModalLabel">Delete {{data.moduleName}}?</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModalDEL.hide()" mdbWavesEffect>Cancel</button>
+        <button type="button" class="btn btn-primary relative waves-light" (click)="saveChangesDEL()" routerLink="/home" mdbWavesEffect>Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

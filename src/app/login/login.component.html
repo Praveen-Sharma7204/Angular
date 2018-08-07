@@ -1,0 +1,37 @@
+<div class="loginBody">
+  <div class="text-center">
+      <div class="logo-wrapper text-center mt-5" >
+          <img src="../../assets/logo.png" routerLink="/home">
+        </div>
+    <div class="col-sm-8 mainSection">
+      <div class="modelContent">
+
+        <div class="col-12 adminLogo">
+          <img src="../../assets/admin.png">
+        </div>
+
+        <form class="col-12">
+          <div class="formGroup">
+            <input style="display: inline; position: relative;" type="text" [(ngModel)] = "email" name = "email" class="form-control" placeholder="Enter Admin E-Mail">
+            <span class="fa fa-user adminIcon"></span>
+          </div>
+          <div class="formGroup">
+            <input style="display: inline; position: relative;" type="password" [(ngModel)] = "password" name = "password" class="form-control" placeholder="Enter password">
+            <span class="fa fa-lock adminIcon"></span>
+          </div>
+          <div class = "">
+          <button type="button" class="login " mdbWavesEffect (click) = "adminLogin()">
+            <span style="display: inline; margin-right: 2px;" class="fa fa-sign-in"></span>
+             Login
+          </button>
+          </div>
+        </form>
+        <div class="col-12 forgot">
+          <a href="-----">Forgot Password?</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
