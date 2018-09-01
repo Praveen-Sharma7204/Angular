@@ -34,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { AddQuestionComponent } from './add-question/add-question.component';
+import { AddMainQuizComponent } from './add-main-quiz/add-main-quiz.component';
 
 export const router: Routes = [
   { path: 'home', component: HomeComponent},
@@ -53,7 +54,8 @@ export const router: Routes = [
   { path: 'allquiz', component: AllQuizComponent},
   { path: 'quiz', component: QuizComponent},
   { path: 'quizpage', component: QuizPageComponent},
-  { path: 'addquestion', component: AddQuestionComponent}
+  { path: 'addquestion', component: AddQuestionComponent},
+  { path: 'add-main-quiz', component: AddMainQuizComponent}
 ];
 
 @NgModule({
@@ -75,6 +77,7 @@ export const router: Routes = [
     QuizComponent,
     QuizPageComponent,
     AddQuestionComponent,
+    AddMainQuizComponent,
   ],
   imports: [
     BrowserModule,
