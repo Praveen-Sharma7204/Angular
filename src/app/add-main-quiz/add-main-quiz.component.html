@@ -1,3 +1,92 @@
-<p>
-  add-main-quiz works!
-</p>
+<app-header></app-header>
+<main>
+  <div class="container">
+    <div class="row mt-5 pt-5 justify-content-center">
+      <div class="col-sm-12 col-lg-9">
+        <div class="card animated fadeInLeft">
+          <div class="card-header info-color">
+            <h2 class="text-white">Create Quiz</h2>
+          </div>
+          <div class="card-body">
+              <form (ngSubmit)="onClick(f)" #f="ngForm">
+              <div class="col-lg-12">
+                <div class="form-group row">
+                  <label id="inputEmail3MD" class="col-sm-2 col-form-label">Question</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input name="question" ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Question" required>
+                    </div>
+                    <div class="md-form mt-0">
+                      <!-- <img name = "noImage" [(ngModel)] = "noImage" hidden ngModel type="file" id = "assets" src="../../assets/Noimage.png"> -->
+                      <input name="mediaURL" ngModel type="file" id = "file12" class="" (change) = "checkFile();" placeholder="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 1</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input name="option1" ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 1" required>
+                    </div>
+                    <div class="md-form mt-0">
+                      <span class="mr-2">Correct Option</span>
+                      <input value="1" ngModel type="radio" name="correctAns" required/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 2</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input name="option2" ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 2" required>
+                    </div>
+                    <div class="md-form mt-0">
+                      <span class="mr-2">Correct Option</span>
+                      <input value="2" ngModel type="radio" name="correctAns" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 3</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input name="option3" ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 3">
+                    </div>
+                    <div class="md-form mt-0">
+                      <span class="mr-2">Correct Option</span>
+                      <input value="3" ngModel type="radio" name="correctAns" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12 mt-5">
+                <div class="form-group row">
+                  <label for="inputEmail3MD" class="col-sm-2 col-form-label">Option 4</label>
+                  <div class="col-sm-10">
+                    <div class="md-form mt-0">
+                      <input name="option4" ngModel type="text" class="form-control" id="inputEmail3MD" placeholder="Enter Your Option 4">
+                    </div>
+                    <div class="md-form mt-0">
+                      <span class="mr-2">Correct Option</span>
+                      <input value="4" ngModel type="radio" name="correctAns" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="button text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

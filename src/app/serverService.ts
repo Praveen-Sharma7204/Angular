@@ -187,6 +187,17 @@ export class ServerService {
     );
   }
 
+  mainQuizCreate(details, id) {
+    console.log(id);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(this.rootURL + 'api/mainQuiz/' + id, details).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
   quizCreate(details) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });

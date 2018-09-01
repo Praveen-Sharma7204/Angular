@@ -20,6 +20,7 @@ export class QuizPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.id = this.serverService.quizid;
     console.log(this.serverService.quizid);
     this.serverService.getQuizComponent().subscribe((data) => {
       console.log(data);
@@ -29,7 +30,7 @@ export class QuizPageComponent implements OnInit {
   initializeQuizData(data) {
     for (const quiz of data) {
       // if (this.serverService.quizid === quiz._id) {
-        if (this.id === quiz._id) {
+      if (this.id === quiz._id) {
         this.data = quiz;
         this.dataSource = this.data.quizObject;
         this.p = 0;
@@ -42,6 +43,8 @@ export class QuizPageComponent implements OnInit {
         }
       }
     }
+    console.log(data);
+    console.log(this.dataSource);
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
