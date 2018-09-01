@@ -11,6 +11,9 @@
         </a>
       </li>
       <li class="nav-item waves-light" mdbWavesEffect>
+        <a class="nav-link" routerLink="/quiz">Quiz</a>
+      </li>
+      <li class="nav-item waves-light" mdbWavesEffect>
         <a class="nav-link" routerLink="/users">Users</a>
       </li>
       <li class="nav-item waves-light" mdbWavesEffect>
@@ -40,7 +43,8 @@
         <a class="dropdown-item" (click)="basicModal.show()">Upload Games</a>
         <a class="dropdown-item" routerLink="/createquiz">Create Quiz</a>
         <a class="dropdown-item" (click)="basicModal2.show()">Add Intro</a>
-        <a class="dropdown-item" (click)="basicModal1.show()">Add Courses</a>
+        <a class="dropdown-item" (click)="basicModal1.show()">Add Courses Component</a>
+        <a class="dropdown-item" (click)="basicModal3.show()">Add Quiz Component</a>
       </div>
     </div>
     <ul class="navbar-nav nav-flex-icons mr-5">
@@ -48,7 +52,7 @@
         <a class=" white-text" routerLink="">Logout</a>
       </li>
     </ul>
-  </links>
+  </links> 
 </mdb-navbar>
 <div mdbModal #basicModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
   aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
@@ -71,7 +75,9 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-            <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save changes</button>
+            <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal.hide()" mdbWavesEffect>Save
+              changes
+            </button>
           </div>
         </form>
       </div>
@@ -82,15 +88,14 @@
   aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <form ngNoForm role="form" method="POST" action="http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/api/course"
-        enctype="multipart/form-data">
+      <form ngNoForm role="form" method="POST" [action]= "url + 'api/course'" enctype="multipart/form-data">
 
         <div class="modal-header info-color">
           <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal1.hide()">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true">×</span> 
           </button>
-          <h4 class="modal-title w-100" id="myModalLabel">Add Courses</h4>
-        </div>
+          <h4 class="modal-title w-100" id="myModalLabel">Add Courses Component</h4>
+        </div> 
         <div class="modal-body">
           <div class="md-form">
             <div class="col-lg-12">
@@ -133,12 +138,12 @@
     </div>
   </div>
 </div>
+
 <div mdbModal #basicModal2="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
   aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <form ngNoForm role="form" method="POST" action="http://192.168.0.18:8080/api/intro"
-        enctype="multipart/form-data">
+      <form ngNoForm role="form" method="POST" [action]= "url + 'api/intro'" enctype="multipart/form-data">
         <!-- ec2-13-232-184-91.ap-south-1.compute.amazonaws.com -->
 
         <div class="modal-header info-color">
@@ -180,6 +185,58 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal2.hide()" mdbWavesEffect>Close</button>
           <button type="submit" class="btn btn-primary relative waves-light" mdbWavesEffect>Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <form ngNoForm role="form" method="POST" action="http://ec2-13-232-223-210.ap-south-1.compute.amazonaws.com:8080/api/mainQuiz" enctype="multipart/form-data"> -->
+<!-- <div class="row">
+    <div class="col-sm-12">
+      <div class="md-form mt-1">
+          <select required type="text" class="form-control" name="intro" [(ngModel)]="mainQuizCat" #time="ngModel" >
+          <option *ngFor="let i of optionIntro" value="{{i}}">{{ i }}</option>
+        </select>
+      </div>
+    </div>
+  </div> -->
+<div mdbModal #basicModal3="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true" [config]="{backdrop: true, ignoreBackdropClick: true}">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+        <div class="modal-header info-color">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal3.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">Add Quiz Component</h4>
+        </div>
+        <div class="modal-body">
+          <div class="md-form">
+
+              <div class="col-lg-12">
+                  <div class="form-group row">
+    
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" [(ngModel)]="mainQuiz.Title" name = 'name' id="inputEmail3MD" placeholder="Quiz Name">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="md-form mt-1">
+                        <input type="text" class="form-control" [(ngModel)]="mainQuiz.Intro" name="intro" id="inputEmail3MD" placeholder="Intro Name">
+                      </div>
+                    </div>    
+                  </div>
+                </div>
+              </div>
+
+        </div>
+        <div class="modal-footer form-group">
+          <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="basicModal3.hide()" mdbWavesEffect>Close</button>
+          <button type="submit" class="btn btn-primary relative waves-light" (click)="basicModal3.hide()" mdbWavesEffect>Save
+            Changes
+          </button>
         </div>
       </form>
     </div>

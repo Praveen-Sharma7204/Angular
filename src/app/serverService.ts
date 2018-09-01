@@ -29,9 +29,11 @@ export class ServerService {
   changeCourseIntro;
   selectedModule;
   allIntroDetails;
-  // rootURL = 'http://192.168.43.145:8080/';
-  rootURL = 'http://192.168.0.18:8080/'; // Wifi
-  // rootURL = 'http://ec2-13-232-184-91.ap-south-1.compute.amazonaws.com:8080/';
+  quizid;
+  cat: string;
+
+  // rootURL = 'http://192.168.0.16:8080/';
+  rootURL = 'http://ec2-13-232-223-210.ap-south-1.compute.amazonaws.com:8080/';
   constructor(private http: Http) {
   }
   getCourses() {
@@ -44,6 +46,22 @@ export class ServerService {
           const data = response.json();
           return data;
         }
+      );
+  }
+  getQuizComponent() {
+    const headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    return this.http.get(this.rootURL + 'api/mainquiz')
+    // return this.http.get(this.rootURL + 'api/mainquiz')
+    .map(
+      (response: Response) => {
+        console.log(response);
+        // const data = JSON.parse(JSON.stringify(response));
+        const data = response.json();
+        console.log(data);
+        return data;
+      }
       );
   }
   getUsers() {
@@ -83,6 +101,18 @@ export class ServerService {
         }
       );
   }
+  // getmainQuiz() {
+  //   const headers = new Headers({
+  //     'Content-Type': 'application/json'
+  //   });
+  //   return this.http.get(this.rootURL + 'api/mainQuiz')
+  //     .map(
+  //       (response: Response) => {
+  //         const data = response.json();
+  //         return data;
+  //       }
+  //     );
+  // }
 
   getAllQuiz() {
     const headers = new Headers({
@@ -146,11 +176,31 @@ export class ServerService {
       }
     );
   }
+  AddMainQuiz(data) {
+    console.log(data);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(this.rootURL + 'api/mainQuiz', data).map(
+      (response: Response) => {
+        console.log(response);
+      }
+    );
+  }
 
   quizCreate(details) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.rootURL + 'api/quiz', details).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+  quizCreateComponent(details) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(this.rootURL + 'api/mainQuiz', details).map(
       (response: Response) => {
         const data = response.json();
         return data;
@@ -239,6 +289,17 @@ export class ServerService {
       }
     );
   }
+  // changequizIntroFun(id, introObject) {
+  //   const headers = new Headers({ 'Content-Type': 'application/json' });
+  //   const options = new RequestOptions({ headers: headers });
+  //   return this.http.put(this.rootURL + 'api/main/' + id, introObject, options).map(
+  //     (response: Response) => {
+  //       const data = response.json();
+  //       return data;
+  //     }
+  //   );
+  // }
+
 
   editGame(id) {
     const headers = new Headers({ 'Content-Type': 'application/json' });

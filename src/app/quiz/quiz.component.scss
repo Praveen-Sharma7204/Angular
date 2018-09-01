@@ -1,0 +1,26 @@
+.card-imgs{
+    height: 130px;
+    width: 100%;
+    object-fit: cover;
+}
+.mask{
+    background: linear-gradient( to top right, #aa66cca8, #33b5e56e );
+}
+.card{
+    height: 310px;
+}
+.card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    text-overflow: ellipsis;
+}
+
+.card-body  {
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+.btnView{
+    position: absolute;
+    bottom: 5px;
+}

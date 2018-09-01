@@ -1,4 +1,3 @@
-import { routes } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -21,11 +20,10 @@ import { AllIntroComponent } from './all-intro/all-intro.component';
 import { AllQuizComponent } from './all-quiz/all-quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServerService } from './serverService';
-import {
-  HttpModule
-} from '@angular/http';
+import { HttpModule } from '@angular/http';
 // tslint:disable-next-line:import-blacklist
 import 'rxjs/Rx';
+
 import {
   Http,
   Headers,
@@ -33,7 +31,9 @@ import {
 } from '@angular/http';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-// #################
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
 
 export const router: Routes = [
   { path: 'home', component: HomeComponent},
@@ -51,7 +51,9 @@ export const router: Routes = [
   { path: 'allgames', component: AllGamesComponent},
   { path: 'allintro', component: AllIntroComponent},
   { path: 'allquiz', component: AllQuizComponent},
-  // ################
+  { path: 'quiz', component: QuizComponent},
+  { path: 'quizpage', component: QuizPageComponent},
+  { path: 'addquestion', component: AddQuestionComponent}
 ];
 
 @NgModule({
@@ -70,7 +72,9 @@ export const router: Routes = [
     AllQuizComponent,
     LoginComponent,
     HeaderComponent,
-    // ###########
+    QuizComponent,
+    QuizPageComponent,
+    AddQuestionComponent,
   ],
   imports: [
     BrowserModule,

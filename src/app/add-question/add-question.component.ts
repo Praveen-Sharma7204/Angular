@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ServerService} from '../serverService';
-import {SelectionModel} from '@angular/cdk/collections';
-import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
+import { ServerService } from '../serverService';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-quiz',
-  templateUrl: './create-quiz.component.html',
-  styleUrls: ['./create-quiz.component.scss']
+  selector: 'app-add-question',
+  templateUrl: './add-question.component.html',
+  styleUrls: ['./add-question.component.scss']
 })
-export class CreateQuizComponent implements OnInit {
-  opption = [];
+export class AddQuestionComponent implements OnInit {opption = [];
   def;
   hide = true;
   flag = 0;
@@ -52,7 +49,6 @@ export class CreateQuizComponent implements OnInit {
 
  onClick(form: NgForm) {
     this.a = form.value;
-    // console.log(this.a);
     this.formData = new FormData();
     this.formData.append('category', this.a.category);
     this.formData.append('question', this.a.question);
@@ -65,11 +61,7 @@ export class CreateQuizComponent implements OnInit {
     this.image = this.file.files;
     this.formData.append('mediaType', this.mediaType);
     this.formData.append('mediaURL', this.image[0]);
-    if (this.click === false)  {
-      // this.formData.append('mediaType', 'null');
-      // this.formData.append('mediaURL', 'null');
-    }
-    this.fetch.quizCreate(this.formData).subscribe((data) => {
+    this.fetch.quizCreateComponent(this.formData).subscribe((data) => {
     }, (error) => console.log('Error'));
   }
   checkFile () {
