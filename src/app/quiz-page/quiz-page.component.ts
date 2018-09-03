@@ -21,6 +21,7 @@ export class QuizPageComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.serverService.quizid;
+    this.id = '5b8a7c449288db35697aac0c';
     console.log(this.serverService.quizid);
     this.serverService.getQuizComponent().subscribe((data) => {
       console.log(data);
@@ -54,6 +55,9 @@ export class QuizPageComponent implements OnInit {
 
   click() {
     console.log('aksdkjhaskd');
+  }
+  callme( data )  {
+    console.log(data);
   }
 
   // saveModuleName(element) {

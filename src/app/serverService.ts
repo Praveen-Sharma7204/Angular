@@ -32,8 +32,8 @@ export class ServerService {
   quizid;
   cat: string;
 
-  // rootURL = 'http://192.168.0.16:8080/';
-  rootURL = 'http://ec2-13-232-223-210.ap-south-1.compute.amazonaws.com:8080/';
+  rootURL = 'http://192.168.0.16:8080/';
+  // rootURL = 'http://ec2-13-232-223-210.ap-south-1.compute.amazonaws.com:8080/';
   constructor(private http: Http) {
   }
   getCourses() {

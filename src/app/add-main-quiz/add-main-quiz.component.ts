@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ServerService } from '../serverService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-main-quiz',
@@ -15,7 +16,7 @@ export class AddMainQuizComponent implements OnInit {
   options = [];
   id: any;
 
-  constructor(private serverservice: ServerService) { }
+  constructor(private serverservice: ServerService, private router: Router) { }
 
   ngOnInit() {
     this.id = this.serverservice.quizid;
@@ -31,13 +32,16 @@ export class AddMainQuizComponent implements OnInit {
     this.options.push(this.a.option3);
     this.options.push(this.a.option4);
     for (let i = 0; i < this.options.length; i++) {
-      this.formData.append('options[]', this.options[i]);
+      if (this.options[i] !== '') {
+        this.formData.append('options[]', this.options[i]);
+      }
     }
     this.formData.append('correctAnswer', this.a.correctAns);
     this.file = document.getElementById('file12');
     this.image = this.file.files;
-    this.formData.append('media', this.image[0]);
+    this.formData.append('image', this.image[0]);
     this.serverservice.mainQuizCreate(this.formData, this.id).subscribe((data) => {
     }, (error) => console.log('Error'));
+    // this.router.navigate(['/quizpage']);
   }
 }
