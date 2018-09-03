@@ -33,7 +33,6 @@ export class ServerService {
   cat: string;
 
   rootURL = 'http://192.168.0.16:8080/';
-  // rootURL = 'http://ec2-13-232-223-210.ap-south-1.compute.amazonaws.com:8080/';
   constructor(private http: Http) {
   }
   getCourses() {
@@ -192,6 +191,51 @@ export class ServerService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.rootURL + 'api/mainQuiz/' + id, details).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+  MainQuizEdit(details, id) {
+    console.log(id);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put(this.rootURL + 'api/mainQuiz/' + id, details).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+
+  MainQuizDelete(id) {
+    console.log(id);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.rootURL + 'api/mainQuiz/' + id).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+  mainQuizEdit(details, id, qid) {
+    console.log(id);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.put(this.rootURL + 'api/mainQuiz/' + id  + '/' + qid, details).map(
+      (response: Response) => {
+        const data = response.json();
+        return data;
+      }
+    );
+  }
+  mainQuizDelete(id, qid) {
+    console.log(id);
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.rootURL + 'api/mainQuiz/' + id  + '/' + qid).map(
       (response: Response) => {
         const data = response.json();
         return data;
