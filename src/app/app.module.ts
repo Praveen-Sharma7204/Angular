@@ -38,9 +38,9 @@ import { AddMainQuizComponent } from './add-main-quiz/add-main-quiz.component';
 
 export const router: Routes = [
   { path: 'home', component: HomeComponent},
-  // { path: 'login', component: LoginComponent},
-  { path: '', component: LoginComponent },
-  // { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent},
+  // { path: '', component: LoginComponent },
+  { path: '', component: HomeComponent },
   { path: 'createquiz', component: CreateQuizComponent },
   { path: 'module', component: ModulePageComponent },
   // { path: 'course-intro', component: CourseIntroComponent},
